@@ -8,11 +8,19 @@
             </div>
             <div class="modal-body">
                 <p><img src="{{asset('images')}}/{{$user->image}}" class="table-user-thumb" alt="photo" width="200"></p>
-
+                <p class="badge badge-pill badge-dark">Role:{{$user->role->name}}</p>
+                <p>Name: {{$user->name}}</p>
+                <p>Email: {{$user->email}}</p>
+                <p>Address: {{$user->address}}</p>
+                <p>Phone number: {{$user->phone_number}}</p>
+                <p>Gender: {{$user->gender}}</p>
+                <p>Department: {{$user->department}}</p>
+                <p>Education: {{$user->education}}</p>
+                <p>About: {{$user->description}}</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+
             </div>
         </div>
     </div>

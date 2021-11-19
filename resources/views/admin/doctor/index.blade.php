@@ -32,7 +32,9 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header"><h3>Data Table</h3></div>
+                <div class="card-header">
+                    <h3>Data Table</h3>
+                </div>
                 <div class="card-body">
                     <table id="data_table" class="table">
                         <thead>
@@ -44,7 +46,7 @@
                                 <th>Phone number</th>
                                 <th>Department</th>
                                 <th class="nosort">&nbsp</th>
-                                <th class="nosort">&nbsp</th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -54,16 +56,17 @@
                                         <td>{{$user->name}}</td>
                                         <td><img src="{{asset('images')}}/{{$user->image}}" class="table-user-thumb" alt=""></td>
                                         <td>{{$user->email}}</td>
-                                        <td>{{$user->address}}<i class="ik ik-eye table-actions " ></i> </td>
-                                        <th>{{$user->phone_number}}</th>
-                                        <th>{{$user->department}}</th>
+                                        <td>{{$user->address}}</td>
+                                        <td>{{$user->phone_number}}</td>
+                                        <td>{{$user->department}}</td>
                                         <td>
                                             <div class="table-actions">
                                                 <a  href="#" data-toggle="modal" data-target="#exampleModal{{$user->id}}"><i class="ik ik-eye" ></i></a>
-                                                <a href="#" data-toggle="modal" data-target="#exampleModal{{$user->id}}"><i class="ik ik-edit-2"></i></a>
-                                                <a href="#" data-toggle="modal" data-target="#exampleModal{{$user->id}}"><i class="ik ik-trash-2"></i></a>
+                                                <a href="#"><i class="ik ik-edit-2"></i></a>
+                                                <a href="#"><i class="ik ik-trash-2"></i></a>
                                             </div>
                                         </td>
+
                                     </tr>
 
                                     <!--View Modal-->
