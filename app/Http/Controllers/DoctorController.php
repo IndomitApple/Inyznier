@@ -51,7 +51,7 @@ class DoctorController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function show($id)
     {
@@ -108,11 +108,21 @@ class DoctorController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        //
+        if(auth()->user()->id == $id)
+        {
+            abort(401);
+        }
+        $user = User::find($id);
+        $userDelete = $user->delete();
+        if($userDelete)
+        {
+            unlink(public_path('images/'.$user->image));
+        }
+        return redirect()->route('doctor.index')->with('message','Profile deleted successfully');
     }
 
     public function validateStore($request)
