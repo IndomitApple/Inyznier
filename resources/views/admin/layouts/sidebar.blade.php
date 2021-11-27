@@ -22,10 +22,10 @@
                         <a href="pages/navbar.html"><i class="ik ik-menu"></i><span>Navigation</span> <span class="badge badge-success">New</span></a>
                     </div>-->
                     <div class="nav-item has-sub">
-                        <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>Doctor</span> <span class="badge badge-danger"></span></a>
+                        <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>Lekarze</span> <span class="badge badge-danger"></span></a>
                         <div class="submenu-content">
-                            <a href="{{route('doctor.index')}}" class="menu-item">View</a>
-                            <a href="{{route('doctor.create')}}" class="menu-item">Create</a>
+                            <a href="{{route('doctor.index')}}" class="menu-item">Lista</a>
+                            <a href="{{route('doctor.create')}}" class="menu-item">Stwórz</a>
                         </div>
                     </div>
                     <div class="nav-lavel">UI Element</div>
@@ -148,3 +148,4 @@
             </div>
         </div>
     </div>
+</div>

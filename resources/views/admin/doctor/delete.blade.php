@@ -8,8 +8,7 @@
                 <div class="page-header-title">
                     <i class="ik ik-edit bg-blue"></i>
                     <div class="d-inline">
-                        <h5>Doctors</h5>
-                        <span>Delete doctor</span>
+                        <h5>Usuń profil lekarza</h5>
                     </div>
                 </div>
             </div>
@@ -20,7 +19,7 @@
                             <a href="../index.html"><i class="ik ik-home"></i></a>
                         </li>
                         <li class="breadcrumb-item"><a href="#">Doctor</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Create</li>
+                        <li class="breadcrumb-item active" aria-current="page">Delete</li>
                     </ol>
                 </nav>
             </div>
@@ -36,7 +35,7 @@
             @endif
 
             <div class="card">
-                <div class="card-header"><h3>Confirm delete </h3></div>
+                <div class="card-header"><h3>Na pewno chcesz usunąć profil? </h3></div>
                 <div class="card-body">
                     <img src="{{asset('images')}}/{{$user->image}}" alt="avatar" width="120">
                     <h2>{{$user->name}}</h2>
@@ -44,10 +43,10 @@
                         @method('DELETE')
                         <div class="card-footer">
                             <button type="submit" class="btn btn-danger mr-2">
-                                Confirm
+                                Zatwierdź
                             </button>
                             <a href="{{route('doctor.index')}}" class="btn btn-secondary">
-                                    Cancel
+                                    Anuluj
                             </a>
                         </div>
                     </form>

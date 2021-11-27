@@ -5,12 +5,6 @@
     </div>
 </footer>
 
-</div>
-</div>
-
-
-
-
 <div class="modal fade apps-modal" id="appsModal" tabindex="-1" role="dialog" aria-labelledby="appsModalLabel" aria-hidden="true" data-backdrop="false">
     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="ik ik-x-circle"></i></button>
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -117,6 +111,15 @@
 <script src="{{asset('template/js/charts.js')}}"></script>
 <script src="{{asset('template/dist/js/theme.min.js')}}"></script>
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+
+<!--DatePicker in appointment site - setting format - date without time-->
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#datepicker").datetimepicker({
+            format: 'DD-MM-YYYY'
+        })
+    })
+</script>
 <script>
     (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
         function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
@@ -125,5 +128,4 @@
         r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
     ga('create','UA-XXXXX-X','auto');ga('send','pageview');
 </script>
-</body>
-</html>
+

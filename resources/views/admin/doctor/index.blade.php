@@ -8,7 +8,7 @@
                     <i class="ik ik-inbox bg-blue"></i>
                     <div class="d-inline">
                         <h5>Doctors</h5>
-                        <span>List of all doctors</span>
+                        <span>Lista użytkowników</span>
                     </div>
                 </div>
             </div>
@@ -44,14 +44,13 @@
                     <table id="data_table" class="table">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th class="nosort">Avatar</th>
-                                <th>Email</th>
-                                <th>Address</th>
-                                <th>Phone number</th>
+                                <th>Imię i nazwisko</th>
+                                <th class="nosort">Awatar</th>
+                                <th>E-mail</th>
+                                <th>Adres</th>
+                                <th>Numer telefonu</th>
                                 <th>Department</th>
                                 <th class="nosort">&nbsp</th>
-
                             </tr>
                         </thead>
                         <tbody>
@@ -78,7 +77,7 @@
                                     @include('admin.doctor.modal')
                                 @endforeach
                             @else
-                                <td>No users to display.</td>
+                                <td>Brak użytkowników do wyświetlenia.</td>
                             @endif
                         </tbody>
                     </table>
