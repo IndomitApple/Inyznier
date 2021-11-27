@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\DoctorController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -30,3 +31,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['middleware'=>['auth','admin']],function(){
     Route::resource('/doctor', DoctorController::class);
 });
+Route::resource('/appointment', AppointmentController::class);
