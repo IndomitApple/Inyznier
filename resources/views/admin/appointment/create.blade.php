@@ -40,11 +40,11 @@
 
     <div class="card">
         <div class="card-header">
-            Wybierz godziny przyjęć
-            <span style="margin-left: 700px">Zaznacz/odznacz&nbsp;</span>
+            Wybierz godziny przyjęć<hr>
+            <span>Zaznacz wszystkie godziny&nbsp</span>
             <span>
-                <input type="checkbox" onclick="for(x in document.getElementsByName('time[]'))
-                    document.getElementsByName('time[]').item(x).checked=this.checked">
+                <input type="checkbox" onclick="for(c in document.getElementsByName('time[]'))
+                    document.getElementsByName('time[]').item(c).checked=this.checked">
             </span>
         </div>
         <div class="card-body">
