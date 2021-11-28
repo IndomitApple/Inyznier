@@ -26,6 +26,7 @@
         </div>
         <hr>
             <!--Search doctors-->
+        <form action="{{url('/')}}" method="GET">
             <div class="card">
                 <div class="card-header">Wybierz datę i sprawdź dostępność lekarzy</div>
                 <div class="card-body">
@@ -39,10 +40,11 @@
                     </div>
                 </div>
             </div>
+        </form>
 
             <!--Display doctors-->
             <div class="card mt-1">
-                <div class="card-header">Dostępni lekarze</div>
+                <div class="card-header">Dostępni lekarze:</div>
                 <div class="card-body">
                     <table class="table table-striped">
                         <thead>
@@ -70,7 +72,7 @@
                                     </td>
                                 </tr>
                                 @empty
-                                <td>Przykro nam, dzisiaj nie ma już wolnych terminów.</td>
+                                <td>Przykro nam, w tym dniu nie ma wolnych terminów.</td>
                             @endforelse
                         </tbody>
                     </table>

@@ -91,11 +91,17 @@
         </main>
     </div>
 
-    <!--DatePicker-->
+    <!--DatePicker - calendar-->
     <script>
+        var dateToday = new Date();
         $( function() {
-            $( "#datepicker" ).datepicker();
-        } );
+            $( "#datepicker" ).datepicker({
+                dateFormat:"dd-mm-yy",
+                showButtonPanel:true,
+                numberOfMonths:2,
+                minDate:dateToday
+            });
+        });
     </script>
 
 </body>
