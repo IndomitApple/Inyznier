@@ -107,13 +107,43 @@ class AppointmentController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Check if the specified resource is in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
     public function check(Request $request)
     {
-        return "ok";
+        $date = $request->date;
+        $appointment = Appointment::where('date',$date)->where('user_id',auth()->user()->id)->first();
+        if(!$appointment)
+        {
+            return redirect()->to('/appointment')->with('errormessage','W tym dniu nie ma żadnych dostępnych terminów.');
+        }
+        $appointmentId = $appointment->id;
+        $times = Time::where('appointment_id', $appointmentId)->get();
+        return view('admin.appointment.index', compact('times','appointmentId','date'));
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+     */
+    public function updateTime(Request $request)
+    {
+        $appointmentId = $request->appointmentId;
+        $appointment = Time::where('appointment_id',$appointmentId)->delete();
+        foreach($request->time as $time)
+        {
+            Time::create([
+                'appointment_id'=>$appointmentId,
+                'time'=>$time,
+                'status'=>0
+            ]);
+        }
+        return redirect()->route('appointment.index')->with('message','Zaktualizowano godziny przyjęć');
+    }
+
 }

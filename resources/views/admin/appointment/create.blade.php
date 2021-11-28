@@ -53,7 +53,7 @@
 <!--Choose hours for visits-->
             <div class="card">
                 <div class="card-header">
-                    Godziny przyjęć<hr>
+                    Godziny przyjęć
                     <span style="margin-left: 650px">Zaznacz wszystkie godziny&nbsp</span>
                     <span>
                         <input type="checkbox" onclick="for(c in document.getElementsByName('time[]'))
