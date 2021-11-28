@@ -66,9 +66,9 @@
 
                             <div class="col-md-6">
                                 <select name="gender" class="form-control" @error('gender') is-invalid @enderror>
-                                    <option value="">Please select your gender</option>
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
+                                    <option value="">Wybierz swoją płeć</option>
+                                    <option value="male">Mężczyzna</option>
+                                    <option value="female">Kobieta</option>
                                 </select>
                             </div>
                             @error('gender')
