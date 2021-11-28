@@ -15,22 +15,26 @@
                     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                     proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
                 <div class="mt-5">
-                    <button class="btn btn-success">Zarejestruj się</button>
-                    <button class="btn btn-secondary">Zaloguj się</button>
+                    <a href="{{url('/register')}}">
+                        <button class="btn btn-success">Zarejestruj się</button>
+                    </a>
+                    <a href="{{url('/login')}}">
+                        <button class="btn btn-secondary">Zaloguj się</button>
+                    </a>
                 </div>
             </div>
         </div>
         <hr>
             <!--Search doctors-->
             <div class="card">
-                <div class="card-header">Wybierz datę</div>
+                <div class="card-header">Wybierz datę i sprawdź dostępność lekarzy</div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-8">
-                            <input type="date" class="form-control" name="date" id="datepicker">
+                            <input type="text" class="form-control" id="datepicker" name="date">
                         </div>
                         <div class="col-md-4">
-                            <button class="btn btn-primary" type="submit">Szukaj dostępnych lekarzy</button>
+                            <button class="btn btn-primary" type="submit">Sprawdź</button>
                         </div>
                     </div>
                 </div>
@@ -51,26 +55,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td><img src="" width="100" style="border-radius: 50%;">
-                                </td>
-                                <td>Jan Kowalski</td>
-                                <td>kardiolog</td>
-                                <td>
-                                    <button class="btn btn-success">Umów wizytę</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td><img src="" width="100" style="border-radius: 50%;">
-                                </td>
-                                <td>Michał Szczepański</td>
-                                <td>psycholog</td>
-                                <td>
-                                    <button class="btn btn-success">Umów wizytę</button>
-                                </td>
-                            </tr>
+                            @forelse($doctors as $doctor)
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>
+                                        <img src="{{asset('images')}}/{{$doctor->doctor->image}}" width="100px" style="border-radius: 50%;">
+                                    </td>
+                                    <td>{{$doctor->doctor->name}}</td>
+                                    <td>{{$doctor->doctor->department}}</td>
+                                    <td>
+                                        <button class="btn btn-success">Umów wizytę</button>
+                                    </td>
+                                </tr>
+                                @empty
+                                <td>Przykro nam, dzisiaj nie ma już wolnych terminów.</td>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
