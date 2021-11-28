@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Appointment;
+use App\Models\Time;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class AppointmentController extends Controller
 {
@@ -13,7 +17,7 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.appointment.index');
     }
 
     /**
@@ -30,11 +34,31 @@ class AppointmentController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            /*'date'=>'required|unique:appointments,date,NULL,id,user_id'.Auth::id(),*/
+            'date' =>['required', Rule::unique('appointments')->where(function ($query) {
+                return $query->where('user_id',Auth::id());
+            })],
+            'time'=>'required'
+        ]);
+        $appointment = Appointment::create
+        ([
+            'user_id' => auth()->user()->id,
+            'date' => $request->date
+        ]);
+        foreach($request->time as $time)
+        {
+            Time::create
+            ([
+                'appointment_id'=>$appointment->id,
+                'time'=>$time
+            ]);
+        }
+        return redirect()->back()->with('message','Godziny wizyt zostały zapisane dla dnia: '.$request->date);
     }
 
     /**
@@ -80,5 +104,16 @@ class AppointmentController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function check(Request $request)
+    {
+        return "ok";
     }
 }
