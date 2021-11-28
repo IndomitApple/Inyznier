@@ -24,6 +24,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('template/dist/css/theme.min.css')}}">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
     <!--DatePicker-->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
