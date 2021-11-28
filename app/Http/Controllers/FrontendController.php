@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Appointment;
 use App\Models\Time;
 use App\Models\User;
+use App\Models\Booking;
 
 class FrontendController extends Controller
 {
@@ -21,13 +22,14 @@ class FrontendController extends Controller
         return view('welcome',compact('doctors'));
     }
 
-    /*Free terms of chosen doctor in one day*/
+    /*Show free terms of chosen doctor in one day*/
     public function show($doctorId, $date)
     {
         $appointment = Appointment::where('user_id',$doctorId)->where('date',$date)->first();
         $times = Time::where('appointment_id',$appointment->id)->where('status',0)->get();
         $user = User::where('id',$doctorId)->first();
-        return view('appointment',compact('times','date','user'));
+        $doctor_id = $doctorId;
+        return view('appointment',compact('times','date','user','doctor_id'));
     }
 
     /*Showing doctors who have free terms for visit in chosen day*/
@@ -37,5 +39,20 @@ class FrontendController extends Controller
         return $doctors;
     }
 
+    public function store(Request $request)
+    {
+        $request->validate(['time'=>'required']);
+        Booking::create
+        ([
+            'user_id'=>auth()->user()->id,
+            'doctor_id'=>$request->doctorId,
+            'time'=>$request->time,
+            'date'=> $request->date,
+            'status'=>0
+        ]);
+
+        Time::where('appointment_id',$request->appointmentId)->where('time',$request->time)->update(['status'=>1]);
+        return redirect()->back()->with('message','Zarezerwowałeś wizytę.');
+    }
 
 }

@@ -16,14 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 Route::get('/', 'App\Http\Controllers\FrontendController@index');
 Route::get('/new-appointment/{doctorId}/{date}', 'App\Http\Controllers\FrontendController@show')->name('create.appointment');
-
 Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index');
 
-Auth::routes();
+Route::post('booking/appointment','App\Http\Controllers\FrontendController@store')->name('booking.appointment')->middleware('auth');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Auth::routes();
 
 Route::group(['middleware'=>['auth','admin']],function(){
     Route::resource('/doctor', DoctorController::class);
