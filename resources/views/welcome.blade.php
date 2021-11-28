@@ -19,7 +19,7 @@
                         <button class="btn btn-success">Zarejestruj się</button>
                     </a>
                     <a href="{{url('/login')}}">
-                        <button class="btn btn-secondary">Zaloguj się</button>
+                        <button class="btn btn-primary">Zaloguj się</button>
                     </a>
                 </div>
             </div>

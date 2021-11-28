@@ -38,7 +38,17 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-success" style="width: 100%">Zarezerwuj wizytę</button>
+                        @if(Auth::check())
+                            <button type="submit" class="btn btn-success" style="width: 100%">Zarezerwuj wizytę</button>
+                        @else
+                            <p>Aby zarezerwować wizytę musisz być zalogowany.</p>
+                            <a href="{{url('/register')}}">
+                                <button class="btn btn-success">Zarejestruj się</button>
+                            </a>
+                            <a href="{{url('/login')}}">
+                                <button class="btn btn-primary">Zaloguj się</button>
+                            </a>
+                        @endif
                     </div>
                 </form>
             </div>
