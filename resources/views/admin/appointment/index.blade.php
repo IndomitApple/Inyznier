@@ -45,7 +45,7 @@
         @endforeach
 
         <form action="{{route('appointment.check')}}" method="post">@csrf
-        <!--Calendar to choose a day of visits-->
+            <!--Calendar to choose a day of visits-->
             <div class="card">
                 <div class="card-header">
                     Wybierz datę
@@ -114,6 +114,35 @@
                     </div>
                 </div>
             </form>
+
+            @else
+            <h3>Twoje dostępne terminy: {{$myappointments->count()}}</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Użytkownik</th>
+                            <th scope="col">Data</th>
+                            <th scope="col">Zobacz</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($myappointments as $appointment)
+                            <tr>
+                                <th scope="row"></th>
+                                <td>{{$appointment->doctor->name}}</td>
+                                <td>{{$appointment->date}}</td>
+                                <td>
+                                    <form action="{{route('appointment.check')}}" method="post">@csrf
+                                        <input type="hidden" name="date" value="{{$appointment->date}}">
+                                        <button type="submit" class="btn btn-primary">Zobacz</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+
         @endif
     </div>
 

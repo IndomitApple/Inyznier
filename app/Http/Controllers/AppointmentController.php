@@ -13,11 +13,12 @@ class AppointmentController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function index()
     {
-        return view('admin.appointment.index');
+        $myappointments = Appointment::where('user_id',auth()->user()->id)->get();
+        return view('admin.appointment.index',compact('myappointments'));
     }
 
     /**
@@ -143,7 +144,7 @@ class AppointmentController extends Controller
                 'status'=>0
             ]);
         }
-        return redirect()->route('appointment.index')->with('message','Zaktualizowano godziny przyjęć');
+        return redirect()->route('appointment.index')->with('message','Zaktualizowano godziny przyjęć.');
     }
 
 }
