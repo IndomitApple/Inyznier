@@ -19,9 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'App\Http\Controllers\FrontendController@index');
 Route::get('/new-appointment/{doctorId}/{date}', 'App\Http\Controllers\FrontendController@show')->name('create.appointment');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index');
 
 Auth::routes();
 
