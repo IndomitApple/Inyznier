@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('template/dist/css/theme.min.css')}}">
 </head>
 <body>
     <div id="app">
