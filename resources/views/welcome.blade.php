@@ -61,7 +61,7 @@
                                 <tr>
                                     <th scope="row">1</th>
                                     <td>
-                                        <img src="{{asset('images')}}/{{$doctor->doctor->image}}" width="100px" style="border-radius: 50%;">
+                                        <img src="{{asset('images')}}/{{$doctor->doctor->image}}" width="100px" alt="awatar" style="border-radius: 50%;">
                                     </td>
                                     <td>{{$doctor->doctor->name}}</td>
                                     <td>{{$doctor->doctor->department}}</td>
