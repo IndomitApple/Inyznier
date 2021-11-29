@@ -120,16 +120,16 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col"></th>
+                            <th scope="col">Nr</th>
                             <th scope="col">Użytkownik</th>
                             <th scope="col">Data</th>
                             <th scope="col">Zobacz</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($myappointments as $appointment)
+                        @foreach($myappointments as $key=>$appointment)
                             <tr>
-                                <th scope="row"></th>
+                                <th scope="row">{{$key+1}}</th>
                                 <td>{{$appointment->doctor->name}}</td>
                                 <td>{{$appointment->date}}</td>
                                 <td>

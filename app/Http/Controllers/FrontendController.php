@@ -44,14 +44,14 @@ class FrontendController extends Controller
     {
         date_default_timezone_set('Europe/Warsaw');
         $request->validate(['time'=>'required']);
-        /*If patient took an appointment this day, he get error message*/
+        /*If patient took an appointment this day, he gets error message*/
         $check = $this->checkBookingTimeInterval();
         if($check)
         {
             return redirect()->back()->with('errormessage','Zarezerwowałeś już dzisiaj wizytę. Poczekaj proszę do następnego dnia, aby móc zarezerować kolejną.');
         }
 
-        /*Reservation created in database*/
+        /*Create booking*/
         Booking::create
         ([
             'user_id'=>auth()->user()->id,
@@ -64,7 +64,7 @@ class FrontendController extends Controller
         /*If the appointment is reserved, it is not available for users to reserve*/
         Time::where('appointment_id',$request->appointmentId)->where('time',$request->time)->update(['status'=>1]);
 
-        /*send email notification*/
+        /*send email notification (http/mail/AppointmentMail && public/resources/views/email/appointment.blade.php)*/
         $doctorName = User::where('id',$request->doctorId)->first();
         $mailData = [
             'name' => auth()->user()->name,
@@ -91,6 +91,12 @@ class FrontendController extends Controller
                 ->where('user_id',auth()->user()->id)
                 ->whereDate('created_at',date('Y-m-d'))
                 ->exists();
+    }
+
+    public function myBookings()
+    {
+        $appointments = Booking::latest()->where('user_id',auth()->user()->id)->get();
+        return view('booking.index',compact('appointments'));
     }
 
 }

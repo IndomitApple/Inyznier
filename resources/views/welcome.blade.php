@@ -49,7 +49,7 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th scope="col"></th>
+                                <th scope="col">Nr</th>
                                 <th scope="col">Zdjęcie</th>
                                 <th scope="col">Imię i nazwisko</th>
                                 <th scope="col">Specjalizacja</th>
@@ -57,9 +57,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($doctors as $doctor)
+                            @forelse($doctors as $key=>$doctor)
                                 <tr>
-                                    <th scope="row">1</th>
+                                    <th scope="row">{{$key+1}}</th>
                                     <td>
                                         <img src="{{asset('images')}}/{{$doctor->doctor->image}}" width="100px" alt="awatar" style="border-radius: 50%;">
                                     </td>
