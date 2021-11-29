@@ -18,14 +18,23 @@ class ProfileController extends Controller
             'name'=>'required',
             'gender'=>'required',
         ]);
-        User::where('id',auth()->user()->id)->update([
-            'name'=>$request->name,
-            'email'=>$request->email,
-            'address'=>$request->address,
-            'phone_number'=>$request->phone_number,
-            'gender'=>$request->gender,
-            'description'=>$request->description,
-        ]);
+        User::where('id',auth()->user()->id)->update($request->except('_token'));
         return redirect()->back()->with('message','Profil został zaktualizowany.');
+    }
+
+    public function profilePic(Request $request)
+    {
+        $this->validate($request, [
+            'file' => 'required|image|mimes:jpg,jpeg,png',
+        ]);
+        if ($request->hasFile('file')) {
+            $image = $request->file('file');
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destination = public_path('/profile');
+            $image->move($destination, $name);
+
+            $user = User::where('id', auth()->user()->id)->update(['image' => $name]);
+            return redirect()->back()->with('message', 'Twoje zdjęcie zostało zaktualizowane.');
+        }
     }
 }

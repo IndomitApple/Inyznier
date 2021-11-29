@@ -77,13 +77,24 @@
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-header">Zdjęcie</div>
-                    <div class="card-body">
-                        <img src="/images/4JqdA9vogx3UbmTqtUiLMmHtCUfCNHTOf2jb4T5a.jpg" alt="awatar" width="120px">
-                        <br>
-                        <input type="file" name="image" class="form-control">
-                        <br>
-                        <button type="submit" class="btn btn-primary">Zapisz</button>
-                    </div>
+                    <form action="{{route('profile.pic')}}" method="post" enctype="multipart/form-data">@csrf
+                        <div class="card-body">
+                            @if(!auth()->user()->image)
+
+                            @else
+                                <img src="/profile/{{auth()->user()->image}}" alt="awatar" width="120px">
+                            @endif
+                            <br>
+                            <input type="file" name="file" class="form-control" required="">
+                            <br>
+                            @error('file')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                            <button type="submit" class="btn btn-primary">Zapisz</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

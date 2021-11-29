@@ -19,12 +19,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 Route::get('/', 'App\Http\Controllers\FrontendController@index');
 Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index');
-Route::get('/new-appointment/{doctorId}/{date}', 'App\Http\Controllers\FrontendController@show')->name('create.appointment');
-Route::get('/my-booking', 'App\Http\Controllers\FrontendController@myBookings')->name('my.booking')->middleware('auth');
-Route::get('/profile', 'App\Http\Controllers\ProfileController@index');
-Route::post('/profile', 'App\Http\Controllers\ProfileController@store')->name('profile.store');
 
-Route::post('booking/appointment','App\Http\Controllers\FrontendController@store')->name('booking.appointment')->middleware('auth');
+Route::get('/new-appointment/{doctorId}/{date}', 'App\Http\Controllers\FrontendController@show')->name('create.appointment');
+
+
+
+Route::group(['middleware'=>['auth','patient']],function(){
+    Route::get('/my-booking', 'App\Http\Controllers\FrontendController@myBookings')->name('my.booking');
+    Route::post('booking/appointment','App\Http\Controllers\FrontendController@store')->name('booking.appointment');
+
+    Route::get('/user-profile', 'App\Http\Controllers\ProfileController@index');
+    Route::post('/profile', 'App\Http\Controllers\ProfileController@store')->name('profile.store');
+    Route::post('/profile-pic', 'App\Http\Controllers\ProfileController@profilePic')->name('profile.pic');
+});
 
 Auth::routes();
 

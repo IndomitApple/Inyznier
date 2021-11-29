@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class Doctor
+class Patient
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class Doctor
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user()->role->name=='doctor'){
+        if(Auth::user()->role->name=='patient'){
             return $next($request);
         }
         else{
