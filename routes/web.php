@@ -37,7 +37,9 @@ Auth::routes();
 
 Route::group(['middleware'=>['auth','admin']],function(){
     Route::resource('/doctor', DoctorController::class);
-    Route::get('/patients', '\App\Http\Controllers\PatientlistController@index');
+    Route::get('/patients', '\App\Http\Controllers\PatientlistController@index')->name('patient');
+    Route::get('/patients/all', '\App\Http\Controllers\PatientlistController@allTimeAppointment')->name('all.appointments');
+    Route::get('/status/update/{id}', '\App\Http\Controllers\PatientlistController@toggleStatus')->name('update.status');
 });
 
 Route::group(['middleware'=>['auth','doctor']],function(){
