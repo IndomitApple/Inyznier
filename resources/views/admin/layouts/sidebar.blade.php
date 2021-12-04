@@ -16,7 +16,10 @@
                 <nav id="main-menu-navigation" class="navigation-main">
                     <div class="nav-lavel">Nawigacja</div>
                     <div class="nav-item active">
-                        <a href="{{url('dashboard')}}"><i class="ik ik-bar-chart-2"></i><span>Dashboard</span></a>
+                        <a href="{{url('dashboard')}}">
+                            <i class="ik ik-bar-chart-2"></i>
+                            <span>Dashboard</span>
+                        </a>
                     </div>
 <!--                    <div class="nav-item">
                         <a href="pages/navbar.html"><i class="ik ik-menu"></i><span>Navigation</span> <span class="badge badge-success">New</span></a>
@@ -48,6 +51,15 @@
                             </div>
                         </div>
                     @endif
+                    <div class="nav-item active">
+                        <a onclick="event.preventDefault(); document.getElementById('logout-form').submit();" href="{{ route('logout') }}">
+                            <i class="ik ik-power dropdown-icon"></i>
+                            {{ __('Logout') }}
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </div>
                 </nav>
             </div>
         </div>
