@@ -32,7 +32,7 @@
                     @endif
                     @if(auth()->check() && auth()->user()->role->name == 'doctor')
                         <div class="nav-item has-sub">
-                            <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>Wizyty</span> <span class="badge badge-danger"></span></a>
+                            <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>Harmonogram</span> <span class="badge badge-danger"></span></a>
                             <div class="submenu-content">
                                 <a href="{{route('appointment.index')}}" class="menu-item">Lista</a>
                                 <a href="{{route('appointment.create')}}" class="menu-item">Stwórz</a>
