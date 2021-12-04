@@ -37,6 +37,7 @@ Auth::routes();
 
 Route::group(['middleware'=>['auth','admin']],function(){
     Route::resource('/doctor', DoctorController::class);
+    Route::get('/patients', '\App\Http\Controllers\PatientlistController@index');
 });
 
 Route::group(['middleware'=>['auth','doctor']],function(){
