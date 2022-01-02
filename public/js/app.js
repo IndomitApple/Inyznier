@@ -2069,8 +2069,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "AddBtn"
+  data: function data() {
+    return {
+      inputs: [{}]
+    };
+  },
+  methods: {
+    add: function add() {
+      this.inputs.push({
+        medicine: ''
+      });
+    },
+    remove: function remove(index) {
+      this.inputs.splice(index, 1);
+    }
+  }
 });
 
 /***/ }),
@@ -59975,7 +59997,64 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c(
+    "div",
+    _vm._l(_vm.inputs, function (input, index) {
+      return _c("div", { key: index, staticClass: "form-group" }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "text", name: "medicine[]" },
+        }),
+        _vm._v(" "),
+        _c("span", [
+          _c(
+            "a",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: index == _vm.inputs.length - 1,
+                  expression: "index==inputs.length-1",
+                },
+              ],
+              attrs: { href: "" },
+              on: {
+                click: function ($event) {
+                  $event.preventDefault()
+                  return _vm.add(index)
+                },
+              },
+            },
+            [_vm._v("Dodaj")]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: index || (!index && _vm.inputs.length > 1),
+                  expression: "index||(!index && inputs.length >1)",
+                },
+              ],
+              attrs: { href: "" },
+              on: {
+                click: function ($event) {
+                  $event.preventDefault()
+                  return _vm.remove(index)
+                },
+              },
+            },
+            [_vm._v("Usuń")]
+          ),
+        ]),
+      ])
+    }),
+    0
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

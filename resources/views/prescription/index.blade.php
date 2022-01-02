@@ -78,7 +78,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body" id="app">
                         <input type="hidden" name="user_id" value="{{$booking->user_id}}">
                         <input type="hidden" name="doctor_id" value="{{$booking->doctor_id}}">
                         <input type="hidden" name="date" value="{{$booking->date}}">
@@ -96,7 +96,8 @@
                         </div>
                         <div class="form-group">
                             <label>Lekarstwa</label>
-                            <textarea name="medicine" class="form-control" placeholder="Lekarstwa bez recepty" required></textarea>
+
+                            <add-btn></add-btn>
                         </div>
                         <div class="form-group">
                             <label>Stosowanie lekarstw</label>
