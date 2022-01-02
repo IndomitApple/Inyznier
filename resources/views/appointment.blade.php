@@ -36,7 +36,7 @@
                 <form action="{{route('booking.appointment')}}" method="post">@csrf
                     <div class="card">
                         <div class="card-header lead">
-                            {{$date}}
+                            {{date('d-m-Y, strtotime($date))}}
                             <br>
                             Wybierz godzinę wizyty:
                         </div>

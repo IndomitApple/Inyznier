@@ -8,6 +8,7 @@ use App\Models\Appointment;
 use App\Models\Time;
 use App\Models\User;
 use App\Models\Booking;
+use Illuminate\Support\Facades\App;
 
 class FrontendController extends Controller
 {
@@ -19,7 +20,7 @@ class FrontendController extends Controller
             $doctors = $this->findDoctorsBasedOnDate(request('date'));
             return view('welcome',compact('doctors'));
         }
-        $doctors = Appointment::where('date',date('d-m-Y'))->get();
+        $doctors = Appointment::where('date',date('Y-m-d'))->get();
         return view('welcome',compact('doctors'));
     }
 
@@ -62,7 +63,9 @@ class FrontendController extends Controller
         ]);
 
         /*If the appointment is reserved, it is not available for users to reserve*/
-        Time::where('appointment_id',$request->appointmentId)->where('time',$request->time)->update(['status'=>1]);
+        Time::where('appointment_id',$request->appointmentId)
+            ->where('time',$request->time)
+            ->update(['status'=>1]);
 
         /*send email notification (http/mail/AppointmentMail && public/resources/views/email/appointment.blade.php)*/
         $doctorName = User::where('id',$request->doctorId)->first();
@@ -97,6 +100,18 @@ class FrontendController extends Controller
     {
         $appointments = Booking::latest()->where('user_id',auth()->user()->id)->get();
         return view('booking.index',compact('appointments'));
+    }
+
+    public function doctorToday(Request $request)
+    {
+        $doctors = Appointment::with('doctor')->whereDate('date',date('Y-m-d'))->get();
+        return $doctors;
+    }
+
+    public function findDoctors(Request $request)
+    {
+        $doctors = Appointment::with('doctor')->whereDate('date',$request->date)->get();
+        return $doctors;
     }
 
 }
