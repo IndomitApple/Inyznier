@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\Prescription;
 use Illuminate\Http\Request;
 
 class PrescriptionController extends Controller
@@ -13,5 +14,12 @@ class PrescriptionController extends Controller
         $bookings = Booking::where('date',date('Y-m-d'))->where('status',0)->get();
         return view('prescription.index',compact('bookings'));
 
+    }
+
+    public function store(Request $request){
+        $data = $request->all();
+        $data['medicine']=implode(',', $request->medicine);
+        Prescription::create($data);
+        return redirect()->back()->with('message','Dodano receptę i zalecenia.');
     }
 }

@@ -60018,6 +60018,7 @@ var render = function () {
                   expression: "index==inputs.length-1",
                 },
               ],
+              staticStyle: { color: "forestgreen" },
               attrs: { href: "" },
               on: {
                 click: function ($event) {
@@ -60040,6 +60041,7 @@ var render = function () {
                   expression: "index||(!index && inputs.length >1)",
                 },
               ],
+              staticStyle: { color: "darkred" },
               attrs: { href: "" },
               on: {
                 click: function ($event) {

@@ -3,8 +3,8 @@
         <div class="form-group" v-for="(input,index) in inputs" :key="index">
             <input type="text" name="medicine[]" class="form-control">
             <span>
-                <a href="" @click.prevent="add(index)" v-show="index==inputs.length-1">Dodaj</a>
-                <a href="" @click.prevent="remove(index)" v-show="index||(!index && inputs.length >1)">Usuń</a>
+                <a href="" @click.prevent="add(index)" v-show="index==inputs.length-1" style="color: forestgreen;">Dodaj</a>
+                <a href="" @click.prevent="remove(index)" v-show="index||(!index && inputs.length >1)" style="color: darkred;">Usuń</a>
             </span>
         </div>
     </div>
