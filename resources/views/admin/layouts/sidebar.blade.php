@@ -1,7 +1,7 @@
 <div class="page-wrap">
     <div class="app-sidebar colored">
         <div class="sidebar-header">
-            <a class="header-brand" href="index.html">
+            <a class="header-brand" href="dashboard">
                 <div class="logo-img">
                     <img src="{{asset('template/src/img/hospital-svgrepo-com.svg')}}" class="header-brand-img" alt="lavalite">
                 </div>
@@ -18,7 +18,7 @@
                     <div class="nav-item active">
                         <a href="{{url('dashboard')}}">
                             <i class="ik ik-bar-chart-2"></i>
-                            <span>Dashboard</span>
+                            <span>Panel</span>
                         </a>
                     </div>
 <!--                    <div class="nav-item">
