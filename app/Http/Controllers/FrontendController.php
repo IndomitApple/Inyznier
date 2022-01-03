@@ -8,6 +8,7 @@ use App\Models\Appointment;
 use App\Models\Time;
 use App\Models\User;
 use App\Models\Booking;
+use App\Models\Prescription;
 use Illuminate\Support\Facades\App;
 
 class FrontendController extends Controller
@@ -114,4 +115,9 @@ class FrontendController extends Controller
         return $doctors;
     }
 
+    public function myPrescription()
+    {
+        $prescriptions = Prescription::where('user_id',auth()->user()->id)->get();
+        return view('my-prescription',compact('prescriptions'));
+    }
 }

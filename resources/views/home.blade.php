@@ -13,7 +13,7 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    Witaj, {{Auth()->user()->name}}
                 </div>
             </div>
         </div>

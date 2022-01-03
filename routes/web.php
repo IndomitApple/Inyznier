@@ -31,6 +31,8 @@ Route::group(['middleware'=>['auth','patient']],function(){
     Route::get('/user-profile', 'App\Http\Controllers\ProfileController@index');
     Route::post('/profile', 'App\Http\Controllers\ProfileController@store')->name('profile.store');
     Route::post('/profile-pic', 'App\Http\Controllers\ProfileController@profilePic')->name('profile.pic');
+
+    Route::get('/my-prescription', 'App\Http\Controllers\FrontendController@myPrescription')->name('my.prescription');
 });
 
 Auth::routes();
