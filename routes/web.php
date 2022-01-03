@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DoctorController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -42,6 +43,7 @@ Route::group(['middleware'=>['auth','admin']],function(){
     Route::get('/patients', '\App\Http\Controllers\PatientlistController@index')->name('patient');
     Route::get('/patients/all', '\App\Http\Controllers\PatientlistController@allTimeAppointment')->name('all.appointments');
     Route::get('/status/update/{id}', '\App\Http\Controllers\PatientlistController@toggleStatus')->name('update.status');
+    Route::resource('/department', DepartmentController::class);
 });
 
 Route::group(['middleware'=>['auth','doctor']],function(){
