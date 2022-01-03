@@ -65,7 +65,7 @@
                                             </button>
                                             @include('prescription.form')
                                         @else
-                                            Zobacz
+                                            <a href="{{route('prescription.show',[$booking->user_id,$booking->date])}}" class="btn btn-success">Zobacz receptę</a>
                                         @endif
                                     </td>
                                 </tr>
