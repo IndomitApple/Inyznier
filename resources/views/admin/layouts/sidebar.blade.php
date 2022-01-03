@@ -47,7 +47,7 @@
                             <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>Pacjenci</span> <span class="badge badge-danger"></span></a>
                             <div class="submenu-content">
                                 <a href="{{route('patients.today')}}" class="menu-item">Dzisiaj</a>
-                                <a href="{{route('appointment.create')}}" class="menu-item">Wszyscy</a>
+                                <a href="{{route('prescribed.patients')}}" class="menu-item">Wszyscy</a>
                             </div>
                         </div>
                     @endif
