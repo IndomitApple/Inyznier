@@ -8,21 +8,10 @@
                 <div class="page-header-title">
                     <i class="ik ik-edit bg-blue"></i>
                     <div class="d-inline">
-                        <h5>Lekarz</h5>
-                        <span>Terminy przyjęć</span>
+                        <h5>Terminy przyjęć</h5>
+                        <span>Dodaj nowe terminy</span>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4">
-                <nav class="breadcrumb-container" aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="../index.html"><i class="ik ik-home"></i></a>
-                        </li>
-                        <li class="breadcrumb-item"><a href="#">Doctor</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Appointment</li>
-                    </ol>
-                </nav>
             </div>
         </div>
     </div>

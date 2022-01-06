@@ -43,7 +43,7 @@
                                     <td>{{$booking->user->name}}</td>
                                     <td>{{$booking->user->email}}</td>
                                     <td>{{$booking->user->phone_number}}</td>
-                                    <td>{{$booking->user->gender}}</td>
+                                    <td>{{__($booking->user->gender)}}</td>
                                     <td>{{$booking->date}}</td>
                                     <td>{{$booking->time}}</td>
                                     <td>{{$booking->doctor->name}}</td>

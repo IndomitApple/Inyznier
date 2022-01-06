@@ -52,7 +52,7 @@ Route::group(['middleware'=>['auth','doctor']],function(){
     Route::post('/appointment/update','App\Http\Controllers\AppointmentController@updateTime')->name('update');
 
     Route::get('/patient-today','App\Http\Controllers\PrescriptionController@index')->name('patients.today');
-
+    Route::get('/status/update/{id}', '\App\Http\Controllers\PatientlistController@toggleStatus')->name('update.status');
     Route::post('/prescription','App\Http\Controllers\PrescriptionController@store')->name('prescription');
     Route::get('/prescription/{UserId}/{date}','App\Http\Controllers\PrescriptionController@show')->name('prescription.show');
     Route::get('/prescribed-patients','App\Http\Controllers\PrescriptionController@patientsFromPrescription')->name('prescribed.patients');

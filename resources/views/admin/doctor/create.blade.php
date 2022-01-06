@@ -13,17 +13,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <nav class="breadcrumb-container" aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="../index.html"><i class="ik ik-home"></i></a>
-                        </li>
-                        <li class="breadcrumb-item"><a href="#">Doctor</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Create</li>
-                    </ol>
-                </nav>
-            </div>
         </div>
     </div>
 
@@ -42,7 +31,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="exampleInputName1">Imię i nazwisko</label>
+                                    <label for="exampleInputName1">Imię i nazwisko:</label>
                                     <input type="text" class="form-control @error('name') is-invalid @enderror" id="exampleInputName1" name="name" value="{{old('name')}}">
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -53,7 +42,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail3">Adres e-mail</label>
+                                    <label for="exampleInputEmail3">Adres e-mail:</label>
                                     <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="exampleInputEmail3" value="{{old('email')}}">
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -67,7 +56,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail3">Hasło</label>
+                                    <label for="exampleInputEmail3">Hasło:</label>
                                     <input type="password" name="password" class="form-control @error('password') is-invalid @enderror">
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -78,7 +67,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="exampleSelectGender">Płeć</label>
+                                    <label for="exampleSelectGender">Płeć:</label>
                                     <select name="gender" class="form-control @error('gender') is-invalid @enderror" id="exampleSelectGender">
                                         <option value="">Wybierz płeć</option>
                                         <option value="male">Mężczyzna</option>
@@ -95,7 +84,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="exampleInputPassword4">Edukacja</label>
+                                    <label for="exampleInputPassword4">Tytuł:</label>
                                     <input type="text" class="form-control @error('education') is-invalid @enderror" id="exampleInputPassword4" name="education" placeholder="Tytuł naukowy" value="{{old('education')}}">
                                     @error('education')
                                         <span class="invalid-feedback" role="alert">
@@ -107,7 +96,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="exampleInputPassword4">Adres</label>
+                                    <label for="exampleInputPassword4">Adres:</label>
                                     <input type="text" class="form-control @error('address') is-invalid @enderror" id="exampleInputPassword4" name="address" placeholder="Ulica, kod pocztowy, miejscowość" value="{{old('address')}}">
                                     @error('address')
                                         <span class="invalid-feedback" role="alert">
@@ -121,7 +110,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="">Specjalizacja</label>
+                                    <label for="">Specjalizacja:</label>
                                     <select name="department" class="form-control">
                                         <option value="">Wybierz specjalizację</option>
                                         @foreach(App\Models\Department::all() as $d)
@@ -138,7 +127,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="">Numer telefonu</label>
+                                    <label for="">Numer telefonu:</label>
                                     <input type="text" name="phone_number" class="form-control @error('phone_number') is-invalid @enderror" value="{{old('phone_number')}}">
                                     @error('phone_number')
                                         <span class="invalid-feedback" role="alert">
@@ -152,7 +141,7 @@
                         <div class="row">
                              <div class="col-md-6">
                                  <div class="form-group">
-                                        <label>Zdjęcie</label>
+                                        <label>Zdjęcie:</label>
                                         <input type="file" name="image" class="form-control file-upload-info @error('image') is-invalid @enderror"  placeholder="Upload Image">
                                      @error('image')
                                         <span class="invalid-feedback" role="alert">
@@ -165,7 +154,7 @@
                             <div class="col-md-6">
                                 <label>Rola</label>
                                 <select name="role_id" class="form-control @error('role_id') is-invalid @enderror">
-                                    <option value="">Wybierz rolę</option>
+                                    <option value="">Rola:</option>
                                     @foreach(App\Role::where('name','!=','patient')->get() as $role)
                                         <option value="{{$role->id}}">
                                             {{$role->name}}

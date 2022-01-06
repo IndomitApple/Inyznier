@@ -30,7 +30,7 @@
 
 <body>
 <!--[if lt IE 8]>
-<p class="browserupgrade">Używasz <strong>przstarzałej</strong> przeglądarki. <a href="http://browsehappy.com/">Zaktualizuj ją</a>, aby apliakcja działała poprawnie.</p>
+<p class="browserupgrade">Używasz <strong>przestarzałej</strong> przeglądarki. <a href="http://browsehappy.com/">Zaktualizuj ją</a>, aby apliakcja działała poprawnie.</p>
 <![endif]-->
 
 <div class="wrapper">

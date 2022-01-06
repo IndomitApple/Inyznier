@@ -5,7 +5,7 @@
                 <div class="logo-img">
                     <img src="{{asset('template/src/img/hospital-svgrepo-com.svg')}}" class="header-brand-img" alt="lavalite">
                 </div>
-                <span class="text">Doctor Panel</span>
+                <span class="text">Doktor Panel</span>
             </a>
             <button type="button" class="nav-toggle"><i data-toggle="expanded" class="ik ik-toggle-right toggle-icon"></i></button>
             <button id="sidebarClose" class="nav-close"><i class="ik ik-x"></i></button>

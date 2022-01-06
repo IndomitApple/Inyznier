@@ -3,24 +3,25 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Doctor information</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title" id="exampleModalLabel">Dane lekarza</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
                 <p><img src="{{asset('images')}}/{{$user->image}}" class="table-user-thumb" alt="photo" width="200"></p>
-                <p class="badge badge-pill badge-dark">Role:{{$user->role->name}}</p>
-                <p>Name: {{$user->name}}</p>
-                <p>Email: {{$user->email}}</p>
-                <p>Address: {{$user->address}}</p>
-                <p>Phone number: {{$user->phone_number}}</p>
-                <p>Gender: {{$user->gender}}</p>
-                <p>Department: {{$user->department}}</p>
-                <p>Education: {{$user->education}}</p>
-                <p>About: {{$user->description}}</p>
+                <p class="badge badge-pill badge-dark">Rola: {{__($user->role->name)}}</p>
+                <p>Imię i nazwisko: {{$user->name}}</p>
+                <p>E-mail: {{$user->email}}</p>
+                <p>Adres: {{$user->address}}</p>
+                <p>Numer telefonu: {{$user->phone_number}}</p>
+                <p>Płeć: {{$user->gender}}</p>
+                <p>Specjalizacja: {{$user->department}}</p>
+                <p>Tytuł: {{$user->education}}</p>
+                <p>O mnie: {{$user->description}}</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
             </div>
         </div>
     </div>

@@ -34,7 +34,7 @@
                                     <td>{{$patient->user->name}}</td>
                                     <td>{{$patient->user->email}}</td>
                                     <td>{{$patient->user->phone_number}}</td>
-                                    <td>{{$patient->user->gender}}</td>
+                                    <td>{{__($patient->user->gender)}}</td>
                                     <td>{{$patient->date}}</td>
                                     <td>{{$patient->time}}</td>
                                     <td>

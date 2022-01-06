@@ -7,23 +7,10 @@
                 <div class="page-header-title">
                     <i class="ik ik-inbox bg-blue"></i>
                     <div class="d-inline">
-                        <h5>Doctors</h5>
-                        <span>Lista użytkowników</span>
+                        <h5>Lekarze</h5>
+                        <span>Lista lekarzy i administratorów</span>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4">
-                <nav class="breadcrumb-container" aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="../index.html"><i class="ik ik-home"></i></a>
-                        </li>
-                        <li class="breadcrumb-item">
-                            <a href="#">Doctors</a>
-                        </li>
-                        <li class="breadcrumb-item active" aria-current="page">Index </li>
-                    </ol>
-                </nav>
             </div>
         </div>
     </div>
@@ -38,18 +25,18 @@
             @endif
             <div class="card">
                 <div class="card-header">
-                    <h3>Data Table</h3>
+                    <h3></h3>
                 </div>
                 <div class="card-body">
                     <table id="data_table" class="table">
                         <thead>
                             <tr>
                                 <th>Imię i nazwisko</th>
-                                <th class="nosort">Awatar</th>
+                                <th class="nosort">Zdjęcie</th>
                                 <th>E-mail</th>
                                 <th>Adres</th>
                                 <th>Numer telefonu</th>
-                                <th>Department</th>
+                                <th>Specjalizacja</th>
                                 <th class="nosort">&nbsp</th>
                             </tr>
                         </thead>
