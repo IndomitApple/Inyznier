@@ -35,7 +35,7 @@
                     Wybierz datę
                 </div>
                 <div class="card-body">
-                    <input type="text" class="form-control datetimepicker-input" id="datepicker" data-toggle="datetimepicker" data-target="#datepicker" name="date">
+                    <input type="date" class="form-control datepicker-input" id="datepicker" data-toggle="datepicker" data-target="#datepicker" name="date">
                 </div>
             </div>
 

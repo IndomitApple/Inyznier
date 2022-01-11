@@ -20,6 +20,7 @@ class CreateBookingsTable extends Migration
             $table->text('time');
             $table->integer('status')->default(0);
             $table->string('date');
+            $table->string('info_from_patient');
             $table->timestamps();
         });
     }

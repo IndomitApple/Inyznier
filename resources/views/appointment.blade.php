@@ -56,6 +56,23 @@
                             </div>
                         </div>
                     </div>
+                    <div class="card">
+                        <div class="card-header lead">
+                            Informacje dla lekarza:
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <textarea class="form-control @error('info_from_patient') is-invalid @enderror" rows="4" name="info_from_patient"
+                                          placeholder="Napisz dodatkowe informacje odnośnie wizyty, takie jak:&#10;-cel wizyty,&#10;-objawy choroby,&#10;-dolegliwości itp.">
+                                </textarea>
+                                @error('info_from_patient')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
                     <div class="card-footer">
                         @if(Auth::check())
                             <button type="submit" class="btn btn-success" style="width: 100%">Zarezerwuj wizytę</button>

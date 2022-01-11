@@ -26,6 +26,7 @@
                                 <th scope="col">Płeć</th>
                                 <th scope="col">Data</th>
                                 <th scope="col">Godzina</th>
+                                <th scope="col">Informacje od pacjenta</th>
                                 <th scope="col">Link do spotkania</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Recepta</th>
@@ -42,6 +43,7 @@
                                     <td>{{__($booking->user->gender)}}</td>
                                     <td>{{$booking->date}}</td>
                                     <td>{{$booking->time}}</td>
+                                    <td>{{$booking->info_from_patient}}</td>
                                     <td>
                                         <button class="btn btn-primary">Dołącz teraz</button>
                                     </td>

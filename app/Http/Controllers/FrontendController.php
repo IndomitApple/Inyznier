@@ -45,7 +45,7 @@ class FrontendController extends Controller
     public function store(Request $request)
     {
         date_default_timezone_set('Europe/Warsaw');
-        $request->validate(['time'=>'required']);
+        $request->validate(['time'=>'required','info_from_patient'=>'required']);
         /*If patient took an appointment this day, he gets error message*/
         $check = $this->checkBookingTimeInterval();
         if($check)
@@ -60,6 +60,7 @@ class FrontendController extends Controller
             'doctor_id'=>$request->doctorId,
             'time'=>$request->time,
             'date'=> $request->date,
+            'info_from_patient'=> $request->info_from_patient,
             'status'=>0
         ]);
 
