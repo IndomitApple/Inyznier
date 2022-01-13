@@ -11,21 +11,19 @@
                         </div>
                     @endif
                     <div class="card-header">
-                        Zaplanowane wizyty: {{$bookings->count()}}
+                        Zaplanowane wizyty dzisiaj: {{$bookings->count()}}
                     </div>
 
                     <div class="card-body">
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th scope="col">Nr</th>
+                                <th scope="col">Godzina</th>
                                 <th scope="col">Zdjęcie</th>
                                 <th scope="col">Pacjent</th>
                                 <th scope="col">Adres e-mail</th>
                                 <th scope="col">Telefon</th>
                                 <th scope="col">Płeć</th>
-                                <th scope="col">Data</th>
-                                <th scope="col">Godzina</th>
                                 <th scope="col">Informacje od pacjenta</th>
                                 <th scope="col">Link do spotkania</th>
                                 <th scope="col">Status</th>
@@ -35,17 +33,15 @@
                             <tbody>
                             @forelse($bookings as $key=>$booking)
                                 <tr>
-                                    <th scope="row">{{$key+1}}</th>
+                                    <td>{{$booking->time}}</td>
                                     <td><img src="/profile/{{$booking->user->image}}" width="80" style="border-radius: 50%"></td>
                                     <td>{{$booking->user->name}}</td>
                                     <td>{{$booking->user->email}}</td>
                                     <td>{{$booking->user->phone_number}}</td>
                                     <td>{{__($booking->user->gender)}}</td>
-                                    <td>{{$booking->date}}</td>
-                                    <td>{{$booking->time}}</td>
                                     <td>{{$booking->info_from_patient}}</td>
                                     <td>
-                                        <button class="btn btn-primary">Dołącz teraz</button>
+                                        <button class="btn btn-primary">Dołącz</button>
                                     </td>
                                     <td>
                                         @if(@$booking->status==0)
@@ -63,11 +59,11 @@
                                         <!-- If prescription exists -> 'show prescription' button, if not -> 'write prescription' button -->
                                         @if(!App\Models\Prescription::where('date',date('Y-m-d'))->where('doctor_id',auth()->user()->id)->where('user_id',$booking->user->id)->exists())
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{$booking->user_id}}">
-                                                Wypisz receptę
+                                                Wypisz
                                             </button>
                                             @include('prescription.form')
                                         @else
-                                            <a href="{{route('prescription.show',[$booking->user_id,$booking->date])}}" class="btn btn-success">Zobacz receptę</a>
+                                            <a href="{{route('prescription.show',[$booking->user_id,$booking->date])}}" class="btn btn-success">Zobacz</a>
                                         @endif
                                     </td>
                                 </tr>
