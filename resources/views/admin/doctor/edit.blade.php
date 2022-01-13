@@ -72,7 +72,7 @@
                                     <select name="gender" class="form-control @error('gender') is-invalid @enderror" id="exampleSelectGender">
                                         @foreach(['male','female'] as $gender )
                                             <option value="{{$gender}}" @if($user->gender==$gender)selected @endif>
-                                                {{$gender}}
+                                                {{__($gender)}}
                                             </option>
                                         @endforeach
                                     </select>
@@ -160,10 +160,10 @@
                             <div class="col-md-6">
                                 <label>Rola:</label>
                                 <select name="role_id" class="form-control @error('role_id') is-invalid @enderror">
-                                    <option value="">Select role</option>
+                                    <option value="">Wybierz rolę</option>
                                     @foreach(App\Role::where('name','!=','patient')->get() as $role)
                                         <option value="{{$role->id}}" @if($user->role_id==$role->id)selected @endif>
-                                            {{$role->name}}
+                                            {{__($role->name)}}
                                         </option>
                                     @endforeach
                                 </select>

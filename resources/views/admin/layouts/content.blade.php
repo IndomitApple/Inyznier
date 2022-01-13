@@ -7,7 +7,12 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="state">
                                 <h6>Pacjenci</h6>
-                                <h2>{{\App\Models\User::where('role_id',3)->count()}}</h2>
+                                @if(auth()->check() && auth()->user()->role->name == 'admin')
+                                    <h2>{{\App\Models\User::where('role_id',3)->count()}}</h2>
+                                @else
+
+                                    <h2>{{\App\Models\User::where('role_id',3)->count()}}</h2>
+                                @endif
                             </div>
                             <div class="icon">
                                 <i class="ik ik-users"></i>

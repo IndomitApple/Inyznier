@@ -15,7 +15,7 @@
                 <p>E-mail: {{$user->email}}</p>
                 <p>Adres: {{$user->address}}</p>
                 <p>Numer telefonu: {{$user->phone_number}}</p>
-                <p>Płeć: {{$user->gender}}</p>
+                <p>Płeć: {{__($user->gender)}}</p>
                 <p>Specjalizacja: {{$user->department}}</p>
                 <p>Tytuł: {{$user->education}}</p>
                 <p>O mnie: {{$user->description}}</p>

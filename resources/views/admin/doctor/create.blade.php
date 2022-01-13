@@ -154,7 +154,7 @@
                             <div class="col-md-6">
                                 <label>Rola</label>
                                 <select name="role_id" class="form-control @error('role_id') is-invalid @enderror">
-                                    <option value="">Rola:</option>
+                                    <option value="">Wybierz rolę</option>
                                     @foreach(App\Role::where('name','!=','patient')->get() as $role)
                                         <option value="{{$role->id}}">
                                             {{$role->name}}
