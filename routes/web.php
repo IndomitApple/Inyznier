@@ -3,6 +3,7 @@
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DoctorController;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -56,4 +57,17 @@ Route::group(['middleware'=>['auth','doctor']],function(){
     Route::post('/prescription','App\Http\Controllers\PrescriptionController@store')->name('prescription');
     Route::get('/prescription/{UserId}/{date}','App\Http\Controllers\PrescriptionController@show')->name('prescription.show');
     Route::get('/prescribed-patients','App\Http\Controllers\PrescriptionController@patientsFromPrescription')->name('prescribed.patients');
+});
+
+//Videochat
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('/video-chat', function () {
+        // fetch all users apart from the authenticated user
+        $users = User::where('id', '<>', Auth::id())->get();
+        return view('video-chat', ['users' => $users]);
+    });
+
+// Endpoints to call or receive calls.
+    Route::post('/video/call-user', 'App\Http\Controllers\VideoChatController@callUser');
+    Route::post('/video/accept-call', 'App\Http\Controllers\VideoChatController@acceptCall');
 });
