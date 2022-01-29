@@ -8,9 +8,14 @@ use Illuminate\Http\Request;
 
 class PrescriptionController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         date_default_timezone_set('Europe/Warsaw');
+        if($request->date)
+        {
+            $bookings = Booking::where('date',$request->date)->where('status',0)->where('doctor_id',auth()->user()->id)->get();
+            return view('prescription.index', compact('bookings'));
+        }
         $bookings = Booking::where('date',date('Y-m-d'))->where('status',0)->where('doctor_id',auth()->user()->id)->get();
         return view('prescription.index',compact('bookings'));
     }

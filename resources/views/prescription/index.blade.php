@@ -11,9 +11,21 @@
                         </div>
                     @endif
                     <div class="card-header">
-                        Zaplanowane wizyty dzisiaj: {{$bookings->count()}}
+                        Zaplanowane wizyty: {{$bookings->count()}}
                     </div>
-
+                        <form action="{{route('patients.today')}}" method="GET">
+                            <div class="card-header">
+                                Wybierz datę: &nbsp
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <input type="date" class="form-control datepicker-input" id="datepicker" data-toggle="datepicker" data-target="#datepicker" name="date">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button type="submit" class="btn btn-primary">Szukaj</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     <div class="card-body">
                         <table class="table table-striped">
                             <thead>
@@ -41,7 +53,7 @@
                                     <td>{{__($booking->user->gender)}}</td>
                                     <td>{{$booking->info_from_patient}}</td>
                                     <td>
-                                        <button class="btn btn-primary">Dołącz</button>
+                                        <a class="btn btn-primary" href="/video-chat/{{$booking->date}}/{{$booking->doctor_id}}/{{$booking->user_id}}" role="button" target="_blank">Dołącz</a>
                                     </td>
                                     <td>
                                         @if(@$booking->status==0)

@@ -5,13 +5,15 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Zaplanowane wizyty: {{$bookings->count()}}</div>
+                    <div class="card-header">
+                        Zaplanowane wizyty: {{$bookings->count()}}
+                    </div>
                     <form action="{{route('patient')}}" method="GET">
                         <div class="card-header">
                             Wybierz datę: &nbsp
                             <div class="row">
                                 <div class="col-md-10">
-                                    <input type="text" class="form-control datetimepicker-input" id="datepicker" data-toggle="datetimepicker" data-target="#datepicker" name="date">
+                                    <input type="date" class="form-control datepicker-input" id="datepicker" data-toggle="datepicker" data-target="#datepicker" name="date">
                                 </div>
                                 <div class="col-md-2">
                                     <button type="submit" class="btn btn-primary">Szukaj</button>

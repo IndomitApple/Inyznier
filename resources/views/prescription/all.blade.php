@@ -38,7 +38,7 @@
                                     <td>{{$patient->date}}</td>
                                     <td>{{$patient->time}}</td>
                                     <td>
-                                        <button class="btn btn-primary">Dołącz teraz</button>
+                                        <a class="btn btn-primary" href="/video-chat/{{$patient->date}}/{{$patient->doctor_id}}/{{$patient->user_id}}" role="button" target="_blank">Dołącz</a>
                                     </td>
                                     <td>
                                         @if(@$patient->status==0)

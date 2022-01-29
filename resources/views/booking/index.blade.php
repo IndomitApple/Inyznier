@@ -25,12 +25,12 @@
                                         <td>{{$appointment->doctor->name}}</td>
                                         <td>{{$appointment->date}}</td>
                                         <td>{{$appointment->time}}</td>
-                                        <td><button class="btn btn-success">Dołącz teraz</button></td>
+                                        <td><a class="btn btn-primary" href="/video-chat/{{$appointment->date}}/{{$appointment->doctor_id}}/{{$appointment->user_id}}" role="button" target="_blank">Dołącz</a></td>
                                         <td>
                                             @if(@$appointment->status==0)
-                                                <button class="btn btn-primary">Nie odbyta</button>
+                                                <button class="btn btn-primary" disabled>Nie odbyta</button>
                                             @else
-                                                <button class="btn btn-success">Odbyta</button>
+                                                <button class="btn btn-success" disabled>Odbyta</button>
                                             @endif
                                         </td>
                                     </tr>

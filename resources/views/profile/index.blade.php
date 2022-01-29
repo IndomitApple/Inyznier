@@ -16,7 +16,7 @@
                         <p>E-mail: {{auth()->user()->email}}</p>
                         <p>Adres: {{auth()->user()->address}}</p>
                         <p>Numer telefonu: {{auth()->user()->phone_number}}</p>
-                        <p>Płeć: {{auth()->user()->gender}}</p>
+                        <p>Płeć: {{__(auth()->user()->gender)}}</p>
                         <p>Opis: {{auth()->user()->description}}</p>
                     </div>
                 </div>

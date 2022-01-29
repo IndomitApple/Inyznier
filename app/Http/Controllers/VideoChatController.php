@@ -14,6 +14,7 @@ class VideoChatController extends Controller
     {
         $doctor_id = $doctorId;
         $user_id = $userId;
+        //Showing only patient for doctor or doctor for patient.
         $users = User::where('id', '<>', Auth::id())->where('id',$doctorId)->orWhere('id', '<>', Auth::id())->where('id',$userId)->get();
         return view('video-chat',compact('date','doctor_id','user_id','users'));
     }

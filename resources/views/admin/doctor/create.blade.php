@@ -157,7 +157,7 @@
                                     <option value="">Wybierz rolę</option>
                                     @foreach(App\Role::where('name','!=','patient')->get() as $role)
                                         <option value="{{$role->id}}">
-                                            {{$role->name}}
+                                            {{__($role->name)}}
                                         </option>
                                     @endforeach
                                 </select>

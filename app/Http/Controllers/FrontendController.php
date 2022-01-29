@@ -47,11 +47,8 @@ class FrontendController extends Controller
         date_default_timezone_set('Europe/Warsaw');
         $request->validate(['time'=>'required','info_from_patient'=>'required']);
         /*If patient took an appointment this day, he gets error message*/
-        $check = $this->checkBookingTimeInterval();
-        if($check)
-        {
-            return redirect()->back()->with('errormessage','Zarezerwowałeś już dzisiaj wizytę. Poczekaj proszę do następnego dnia, aby móc zarezerować kolejną.');
-        }
+        //Patient can book only one appointment per day
+
 
         /*Create booking*/
         Booking::create
