@@ -61,7 +61,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label>Opis</label>
+                                <label>Opis - choroby przewlekłe</label>
                                 <textarea name="description" class="form-control">
                                     {{auth()->user()->description}}
                                 </textarea>

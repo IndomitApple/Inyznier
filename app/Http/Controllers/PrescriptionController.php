@@ -13,10 +13,10 @@ class PrescriptionController extends Controller
         date_default_timezone_set('Europe/Warsaw');
         if($request->date)
         {
-            $bookings = Booking::where('date',$request->date)->where('status',0)->where('doctor_id',auth()->user()->id)->get();
+            $bookings = Booking::where('date',$request->date)->where('status',0)->where('doctor_id',auth()->id())->get();
             return view('prescription.index', compact('bookings'));
         }
-        $bookings = Booking::where('date',date('Y-m-d'))->where('status',0)->where('doctor_id',auth()->user()->id)->get();
+        $bookings = Booking::where('date',date('Y-m-d'))->where('status',0)->where('doctor_id',auth()->id())->get();
         return view('prescription.index',compact('bookings'));
     }
 
@@ -30,13 +30,21 @@ class PrescriptionController extends Controller
 
     public function show($userId,$date)
     {
-        $prescription = Prescription::where('user_id',$userId)->where('date',$date)->first();
+        $prescription = Prescription::where('user_id',$userId)->where('doctor_id',auth()->id())->where('date',$date)->first();
         return view('prescription.show',compact('prescription'));
     }
 
     public function patientsFromPrescription()
     {
-        $patients = Prescription::latest()->get();
+        $patients = Prescription::latest()->where('doctor_id',auth()->id())->get();
         return view('prescription.all',compact('patients'));
+    }
+
+    public function toggleStatus($id)
+    {
+        $booking = Booking::find($id);
+        $booking->status =! $booking->status;
+        $booking->save();
+        return redirect()->back();
     }
 }

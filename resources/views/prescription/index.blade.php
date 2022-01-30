@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-12">
+            <div class="col-md-16">
                 <div class="card">
                     @if(Session::has('message'))
                         <div class="alert alert-success">
@@ -26,7 +26,7 @@
                                 </div>
                             </div>
                         </form>
-                    <div class="card-body">
+                    <div class="card-body" id="app">
                         <table class="table table-striped">
                             <thead>
                             <tr>
@@ -37,8 +37,9 @@
                                 <th scope="col">Adres e-mail</th>
                                 <th scope="col">Telefon</th>
                                 <th scope="col">Płeć</th>
-                                <th scope="col">Informacje od pacjenta</th>
-                                <th scope="col">Link do spotkania</th>
+                                <th scope="col">Choroby przewlekłe</th>
+                                <th scope="col">Informacje do wizyty</th>
+                                <th scope="col">Spotkanie</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Recepta</th>
                             </tr>
@@ -53,6 +54,7 @@
                                     <td>{{$booking->user->email}}</td>
                                     <td>{{$booking->user->phone_number}}</td>
                                     <td>{{__($booking->user->gender)}}</td>
+                                    <td>{{__($booking->user->description)}}</td>
                                     <td>{{$booking->info_from_patient}}</td>
                                     <td>
                                         <a class="btn btn-primary" href="/video-chat/{{$booking->date}}/{{$booking->doctor_id}}/{{$booking->user_id}}" role="button" target="_blank">Dołącz</a>
@@ -71,7 +73,7 @@
                                     <td>
                                         <!-- Button trigger modal -->
                                         <!-- If prescription exists -> 'show prescription' button, if not -> 'write prescription' button -->
-                                        @if(!App\Models\Prescription::where('date',date('Y-m-d'))->where('doctor_id',auth()->user()->id)->where('user_id',$booking->user->id)->exists())
+                                        @if(!App\Models\Prescription::where('date',$booking->date)->where('doctor_id',auth()->user()->id)->where('user_id',$booking->user->id)->exists())
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{$booking->user_id}}">
                                                 Wypisz
                                             </button>

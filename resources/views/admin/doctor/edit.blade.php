@@ -25,7 +25,9 @@
             @endif
 
             <div class="card">
-                <div class="card-header"><h3>Formularz aktualizacji danych</h3></div>
+                <div class="card-header">
+                    <h3>Formularz aktualizacji danych</h3>
+                </div>
                 <div class="card-body">
                     <form class="forms-sample" action="{{route('doctor.update',[$user->id])}}" enctype="multipart/form-data" method="post">@csrf
                         @method('PUT')
@@ -186,8 +188,7 @@
                             @enderror
                         </div>
                         <button type="submit" class="btn btn-primary mr-2">Zapisz</button>
-                        <button class="btn btn-light">Anuluj</button>
-
+                        <a href="/doctor" id="cancel" class="btn btn-light">Anuluj</a>
                     </form>
                 </div>
             </div>

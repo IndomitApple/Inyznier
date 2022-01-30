@@ -119,7 +119,7 @@ class FrontendController extends Controller
 
     public function myPrescription()
     {
-        $prescriptions = Prescription::where('user_id',auth()->user()->id)->get();
+        $prescriptions = Prescription::where('user_id',auth()->user()->id)->orderby('date','desc')->get();
         return view('my-prescription',compact('prescriptions'));
     }
 }

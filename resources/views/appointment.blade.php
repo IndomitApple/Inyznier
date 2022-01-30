@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-body text-center">
                         <h4>Informacje</h4>
-                        <img src="{{asset('images')}}/{{$user->image}}" width="100px" style="border-radius: 50%;" alt="Awatar">
+                        <img src="{{asset('images')}}/{{$user->image}}" width="100px" alt="Awatar">
                         <br>
                         <br>
                         <p class="lead">Imię i nazwisko: {{ucfirst($user->name)}}</p>
