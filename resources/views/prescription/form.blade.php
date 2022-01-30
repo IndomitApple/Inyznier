@@ -39,10 +39,6 @@
                             <label>Dodatkowe informacje</label>
                             <textarea name="feedback" class="form-control" placeholder="Dodatkowe informacje o pacjencie" required></textarea>
                         </div>
-                        <div class="form-group">
-                            <label>Podpis</label>
-                            <input type="text" name="signature" class="form-control" required>
-                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>

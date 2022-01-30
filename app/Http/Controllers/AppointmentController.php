@@ -17,7 +17,8 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        $myappointments = Appointment::where('user_id',auth()->user()->id)->get();
+        //doctor can see only future appointments (from tomorrow day)
+        $myappointments = Appointment::where('user_id',auth()->user()->id)->where('date', '>=', now())->get();
         return view('admin.appointment.index',compact('myappointments'));
     }
 
@@ -115,11 +116,12 @@ class AppointmentController extends Controller
      */
     public function check(Request $request)
     {
+        //Doctor can choose only future days
         $date = $request->date;
-        $appointment = Appointment::where('date',$date)->where('user_id',auth()->user()->id)->first();
+        $appointment = Appointment::where('date',$date)->where('date', '>=', now())->where('user_id',auth()->user()->id)->first();
         if(!$appointment)
         {
-            return redirect()->to('/appointment')->with('errormessage','W tym dniu nie ma żadnych dostępnych terminów.');
+            return redirect()->to('/appointment')->with('errormessage','Wybrałeś złą datę lub w tym dniu nie ma żadnych terminów.');
         }
         $appointmentId = $appointment->id;
         $times = Time::where('appointment_id', $appointmentId)->get();

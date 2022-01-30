@@ -48,7 +48,11 @@ class FrontendController extends Controller
         $request->validate(['time'=>'required','info_from_patient'=>'required']);
         /*If patient took an appointment this day, he gets error message*/
         //Patient can book only one appointment per day
-
+        $check = $this->checkBookingTimeInterval();
+        if($check)
+        {
+            return redirect()->back()->with('errormessage','Zarezerwowałeś już dzisiaj wizytę. Poczekaj proszę do następnego dnia, aby móc zarezerować kolejną.');
+        }
 
         /*Create booking*/
         Booking::create

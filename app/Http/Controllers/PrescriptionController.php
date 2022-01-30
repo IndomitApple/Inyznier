@@ -36,7 +36,7 @@ class PrescriptionController extends Controller
 
     public function patientsFromPrescription()
     {
-        $patients = Prescription::get();
+        $patients = Prescription::latest()->get();
         return view('prescription.all',compact('patients'));
     }
 }

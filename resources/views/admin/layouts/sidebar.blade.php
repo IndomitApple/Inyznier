@@ -5,7 +5,7 @@
                 <div class="logo-img">
                     <img src="{{asset('template/src/img/hospital-svgrepo-com.svg')}}" class="header-brand-img" alt="lavalite">
                 </div>
-                <span class="text">Doktor Panel</span>
+                <span class="text">TwójLekarz</span>
             </a>
             <button type="button" class="nav-toggle"><i data-toggle="expanded" class="ik ik-toggle-right toggle-icon"></i></button>
             <button id="sidebarClose" class="nav-close"><i class="ik ik-x"></i></button>
@@ -44,10 +44,10 @@
                     @endif
                     @if(auth()->check() && auth()->user()->role->name == 'doctor')
                         <div class="nav-item has-sub">
-                            <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>Pacjenci</span> <span class="badge badge-danger"></span></a>
+                            <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>Wizyty</span> <span class="badge badge-danger"></span></a>
                             <div class="submenu-content">
-                                <a href="{{route('patients.today')}}" class="menu-item">Dzisiaj</a>
-                                <a href="{{route('prescribed.patients')}}" class="menu-item">Wszyscy</a>
+                                <a href="{{route('patients.today')}}" class="menu-item">Zaplanowane</a>
+                                <a href="{{route('prescribed.patients')}}" class="menu-item">Odbyte</a>
                             </div>
                         </div>
                     @endif

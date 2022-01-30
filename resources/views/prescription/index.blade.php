@@ -31,6 +31,7 @@
                             <thead>
                             <tr>
                                 <th scope="col">Godzina</th>
+                                <th scope="col">Data</th>
                                 <th scope="col">Zdjęcie</th>
                                 <th scope="col">Pacjent</th>
                                 <th scope="col">Adres e-mail</th>
@@ -46,7 +47,8 @@
                             @forelse($bookings as $key=>$booking)
                                 <tr>
                                     <td>{{$booking->time}}</td>
-                                    <td><img src="/profile/{{$booking->user->image}}" width="80" style="border-radius: 50%"></td>
+                                    <td>{{$booking->date}}</td>
+                                    <td><img src="/profile/{{$booking->user->image}}" width="80" ></td>
                                     <td>{{$booking->user->name}}</td>
                                     <td>{{$booking->user->email}}</td>
                                     <td>{{$booking->user->phone_number}}</td>
