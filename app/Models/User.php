@@ -28,7 +28,8 @@ class User extends Authenticatable
         'image',
         'education',
         'description',
-        'gender'
+        'gender',
+        'pesel'
     ];
 
     /**

@@ -34,6 +34,7 @@
                                 <th scope="col">Data</th>
                                 <th scope="col">Zdjęcie</th>
                                 <th scope="col">Pacjent</th>
+                                <th scope="col">PESEL</th>
                                 <th scope="col">Adres e-mail</th>
                                 <th scope="col">Telefon</th>
                                 <th scope="col">Płeć</th>
@@ -51,6 +52,7 @@
                                     <td>{{$booking->date}}</td>
                                     <td><img src="/profile/{{$booking->user->image}}" width="80" ></td>
                                     <td>{{$booking->user->name}}</td>
+                                    <td>{{$booking->user->pesel}}</td>
                                     <td>{{$booking->user->email}}</td>
                                     <td>{{$booking->user->phone_number}}</td>
                                     <td>{{__($booking->user->gender)}}</td>
