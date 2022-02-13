@@ -4,11 +4,13 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Moje recepty</div>
+                    <div class="card-header">
+                        <h3>Moje recepty</h3>
+                    </div>
                     <div class="card-body">
-                        <table class="table">
+                        <table class="table table-responsive">
                             <thead>
-                            <tr>
+                            <tr class="text-nowrap">
                                 <th scope="col">Data</th>
                                 <th scope="col">Lekarz</th>
                                 <th scope="col">Kod recepty</th>
@@ -22,7 +24,7 @@
                             <tbody>
                             @forelse($prescriptions as $prescription)
                                 <tr>
-                                    <td>{{$prescription->date}}</td>
+                                    <td class="text-nowrap">{{$prescription->date}}</td>
                                     <td>{{$prescription->doctor->name}}</td>
                                     <td>{{$prescription->prescription_code}}</td>
                                     <td>{{$prescription->medicine}}</td>
@@ -32,7 +34,7 @@
                                     <td>{{$prescription->feedback}}</td>
                                 </tr>
                             @empty
-                             <td>Aktualnie nie posiadasz żadnych recept.</td>
+                             <td>Brak recept.</td>
                              <td></td>
                             @endforelse
                             </tbody>

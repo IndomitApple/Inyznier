@@ -379,6 +379,7 @@ export default {
             if (!this.mutedVideo) this.toggleMuteVideo();
             if (!this.mutedAudio) this.toggleMuteAudio();
             this.stopStreamedVideo(this.$refs.userVideo);
+            this.callPlaced = false;
             if (this.authuserid === this.videoCallParams.caller) {
                 this.videoCallParams.peer1.destroy();
             } else {
@@ -453,8 +454,52 @@ export default {
 
 /* Mobile Styles */
 @media only screen and (max-width: 768px) {
+
     .video-container {
-        height: 50vh;
+        width: 100%;
+        height: 100%;
+        margin: 0 ;
+        border: 0;
+        position: fixed;
+        box-shadow: 1px 1px 11px #9e9e9e;
+        background-color: #fff;
+    }
+
+    .video-container .partner-video {
+        width: 100%;
+        height: 50%;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        z-index: 1;
+        margin: 0;
+        padding: 0;
+    }
+
+    .video-container .user-video {
+        width: 100%;
+        height: 50%;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 50%;
+        z-index: 1;
+        margin: 0;
+        padding: 0;
+    }
+
+    .video-container .action-btns {
+        max-width: 100%;
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        margin-left: -140px;
+        z-index: 3;
+        display: flex;
+        flex-direction: row;
     }
 }
 </style>

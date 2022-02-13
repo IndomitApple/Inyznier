@@ -8,22 +8,26 @@
             </div>
         @endif
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-lg-3">
                 <div class="card">
-                    <div class="card-header">Twój profil</div>
+                    <div class="card-header">
+                        <h3>Twój profil</h3>
+                    </div>
                     <div class="card-body">
-                        <p>Imię i nazwisko: {{auth()->user()->name}}</p>
-                        <p>E-mail: {{auth()->user()->email}}</p>
-                        <p>Adres: {{auth()->user()->address}}</p>
-                        <p>Numer telefonu: {{auth()->user()->phone_number}}</p>
-                        <p>Płeć: {{__(auth()->user()->gender)}}</p>
-                        <p>Opis: {{auth()->user()->description}}</p>
+                        <p>Imię i nazwisko: <b>{{auth()->user()->name}}</b></p>
+                        <p>E-mail: <b>{{auth()->user()->email}}</b></p>
+                        <p>Adres: <b>{{auth()->user()->address}}</b></p>
+                        <p>Numer telefonu: <b>{{auth()->user()->phone_number}}</b></p>
+                        <p>Płeć: <b>{{__(auth()->user()->gender)}}</b></p>
+                        <p>Opis: <b>{{auth()->user()->description}}</b></p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-lg-6">
                 <div class="card">
-                    <div class="card-header">Zaktualizuj informacje o sobie</div>
+                    <div class="card-header">
+                        <h3>Zaktualizuj swoje dane</h3>
+                    </div>
                     <div class="card-body">
                         <form action="{{route('profile.store')}}" method="post">@csrf
                             <div class="form-group">
@@ -62,9 +66,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Opis - choroby przewlekłe</label>
-                                <textarea name="description" class="form-control">
-                                    {{auth()->user()->description}}
-                                </textarea>
+                                <textarea name="description" class="form-control">{{auth()->user()->description}}</textarea>
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-primary" type="submit">Zapisz</button>
@@ -74,9 +76,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-lg-3">
                 <div class="card">
-                    <div class="card-header">Zdjęcie</div>
+                    <div class="card-header">
+                        <h3>Zdjęcie</h3>
+                    </div>
                     <form action="{{route('profile.pic')}}" method="post" enctype="multipart/form-data">@csrf
                         <div class="card-body">
                             @if(!auth()->user()->image)
@@ -85,7 +89,8 @@
                                 <img src="/profile/{{auth()->user()->image}}" alt="awatar" width="120px">
                             @endif
                             <br>
-                            <input type="file" name="file" class="form-control" required="">
+                            <br>
+                            <input type="file" name="file" class="form-control-file"  required="">
                             <br>
                             @error('file')
                                 <span class="invalid-feedback" role="alert">

@@ -101,7 +101,7 @@ class FrontendController extends Controller
 
     public function myBookings()
     {
-        $appointments = Booking::latest()->where('user_id',auth()->user()->id)->get();
+        $appointments = Booking::orderby('date','desc')->where('user_id',auth()->user()->id)->where('status',0)->get();
         return view('booking.index',compact('appointments'));
     }
 
@@ -119,7 +119,7 @@ class FrontendController extends Controller
 
     public function myPrescription()
     {
-        $prescriptions = Prescription::where('user_id',auth()->user()->id)->orderby('date','desc')->get();
+        $prescriptions = Prescription::orderby('date','desc')->where('user_id',auth()->user()->id)->get();
         return view('my-prescription',compact('prescriptions'));
     }
 }

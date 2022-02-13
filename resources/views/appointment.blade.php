@@ -3,11 +3,11 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-lg-3">
                 <div class="card">
-                    <div class="card-body text-center">
+                    <div class="card-body text-center ">
                         <h4>Informacje</h4>
-                        <img src="{{asset('images')}}/{{$user->image}}" width="100px" alt="Awatar">
+                        <img src="{{asset('images')}}/{{$user->image}}" width="100px" class="img-fluid" alt="Awatar">
                         <br>
                         <br>
                         <p class="lead">Imię i nazwisko: {{ucfirst($user->name)}}</p>
@@ -17,7 +17,7 @@
                 </div>
             </div>
 
-            <div class="col-md-9">
+            <div class="col-lg-9">
 <!--                errors & messages-->
                 @foreach($errors->all() as $error)
                     <div class="alert alert-danger">{{$error}}</div>
@@ -43,7 +43,7 @@
                         <div class="card-body">
                             <div class="row">
                                 @foreach($times as $time)
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 col-sm-4 col-6 text-center ">
                                         <label class="btn btn-outline-primary">
                                             <input type="radio" name="time" value="{{$time->time}}">
                                             <span>{{$time->time}}</span>

@@ -3,11 +3,13 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">{{ __('Your appointments')}}: {{$appointments->count()}}</div>
+                    <div class="card-header">
+                        <h3>Twoje zaplanowane wizyty: {{$appointments->count()}}</h3>
+                    </div>
                     <div class="card-body">
-                        <table class="table table-striped">
+                        <table class="table table-striped table-responsive-sm table-responsive-md text-nowrap">
                             <thead>
                             <tr>
                                 <th scope="col">Nr</th>
@@ -23,9 +25,9 @@
                                     <tr>
                                         <th scope="row">{{$key+1}}</th>
                                         <td>{{$appointment->doctor->name}}</td>
-                                        <td>{{$appointment->date}}</td>
+                                        <td class="text-nowrap">{{$appointment->date}}</td>
                                         <td>{{$appointment->time}}</td>
-                                        <td><a class="btn btn-primary" href="/video-chat/{{$appointment->date}}/{{$appointment->doctor_id}}/{{$appointment->user_id}}" role="button" target="_blank">Dołącz</a></td>
+                                        <td><a class="btn btn-primary" href="/video-chat/{{$appointment->date}}/{{$appointment->doctor_id}}/{{$appointment->user_id}}" role="button" >Dołącz</a></td>
                                         <td>
                                             @if(@$appointment->status==0)
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#cc0000" class="bi bi-x-square-fill" viewBox="0 0 16 16">

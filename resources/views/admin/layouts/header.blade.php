@@ -50,7 +50,7 @@
                 </div>
                 <div class="top-menu d-flex align-items-center">
                     <div class="dropdown">
-                        <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="dropdown-toggle"  id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <strong>
                                 {{strtoupper(Auth()->user()->name)}}
                             </strong>
