@@ -170,9 +170,7 @@
                         </div>
                             <div class="form-group">
                                 <label for="exampleTextarea1">O mnie:</label>
-                                <textarea class="form-control @error('description') is-invalid @enderror" id="exampleTextarea1" rows="4" name="description">
-                                    {{old('description')}}
-                                </textarea>
+                                <textarea class="form-control @error('description') is-invalid @enderror" id="exampleTextarea1" rows="4" name="description">{{old('description')}}</textarea>
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

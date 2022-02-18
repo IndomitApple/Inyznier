@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
+
 
 class User extends Authenticatable
 {
@@ -59,10 +62,11 @@ class User extends Authenticatable
     public function userAvatar($request)
     {
         $image = $request->file('image');
-        $name = $image->hashName();
-        $destination = public_path('/images');
-        $image->move($destination, $name);
+        $name = time() . '.' . $image->getClientOriginalName();
+        $filePath = 'images/' . $name;
+        Storage::disk('s3')->put($filePath, file_get_contents($image));
         return $name;
     }
+
 
 }

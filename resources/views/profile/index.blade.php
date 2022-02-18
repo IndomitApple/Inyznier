@@ -86,7 +86,7 @@
                             @if(!auth()->user()->image)
 
                             @else
-                                <img src="/profile/{{auth()->user()->image}}" alt="awatar" width="120px">
+                                <img src="https://twojlekarzprofile.s3.eu-central-1.amazonaws.com/images/{{auth()->user()->image}}" alt="awatar" width="120px">
                             @endif
                             <br>
                             <br>

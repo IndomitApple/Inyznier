@@ -88,7 +88,7 @@ class DoctorController extends Controller
         if($request->hasFile('image'))
         {
             $imageName = (new User)->userAvatar($request);
-            unlink(public_path('images/'.$user->image));
+            unlink('https://twojlekarzprofile.s3.eu-central-1.amazonaws.com/images/'.$user->image);
         }
         $data['image'] = $imageName;
         if($request->password)
@@ -120,7 +120,7 @@ class DoctorController extends Controller
         $userDelete = $user->delete();
         if($userDelete)
         {
-            unlink(public_path('images/'.$user->image));
+            unlink('https://twojlekarzprofile.s3.eu-central-1.amazonaws.com/images/'.$user->image);
         }
         return redirect()->route('doctor.index')->with('message','Profil lekarza został usunięty.');
     }

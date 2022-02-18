@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p><img src="{{asset('images')}}/{{$user->image}}" class="table-user-thumb" alt="photo" width="200"></p>
+                <p><img src="https://twojlekarzprofile.s3.eu-central-1.amazonaws.com/images/{{$user->image}}" class="table-user-thumb" alt="photo" width="200"></p>
                 <p class="badge badge-pill badge-dark">Rola: {{__($user->role->name)}}</p>
                 <p>Imię i nazwisko: {{$user->name}}</p>
                 <p>E-mail: {{$user->email}}</p>

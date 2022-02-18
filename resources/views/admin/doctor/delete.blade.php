@@ -26,7 +26,7 @@
             <div class="card">
                 <div class="card-header"><h3>Na pewno chcesz usunąć profil? </h3></div>
                 <div class="card-body">
-                    <img src="{{asset('images')}}/{{$user->image}}" alt="avatar" width="120">
+                    <img src="https://twojlekarzprofile.s3.eu-central-1.amazonaws.com/images/{{$user->image}}" alt="avatar" width="120">
                     <h2>{{$user->name}}</h2>
                     <form class="forms-sample" action="{{route('doctor.destroy',[$user->id])}}" method="post">@csrf
                         @method('DELETE')

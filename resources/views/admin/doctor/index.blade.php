@@ -45,7 +45,7 @@
                                 @foreach($users as $user)
                                     <tr>
                                         <td>{{$user->name}}</td>
-                                        <td><img src="{{asset('images')}}/{{$user->image}}" class="table-user-thumb" alt=""></td>
+                                        <td><img src="https://twojlekarzprofile.s3.eu-central-1.amazonaws.com/images/{{$user->image}}" class="table-user-thumb" alt=""></td>
                                         <td>{{$user->email}}</td>
                                         <td>{{$user->address}}</td>
                                         <td>{{$user->phone_number}}</td>

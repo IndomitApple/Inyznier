@@ -27,7 +27,7 @@
                         <tr v-for="(d,index) in doctors" v-if="!loading">
                             <th scope="row"></th>
                             <td>
-                                <img :src=" '/images/' + d.doctor.image" width="80" class="img-fluid">
+                                <img :src="'https://twojlekarzprofile.s3.eu-central-1.amazonaws.com/images/'+d.doctor.image" width="80" class="img-fluid">
                             </td>
                             <td>{{d.doctor.name}}</td>
                             <td>{{d.doctor.department}}</td>

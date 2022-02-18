@@ -50,7 +50,7 @@
                                 <tr>
                                     <td>{{$booking->time}}</td>
                                     <td>{{$booking->date}}</td>
-                                    <td><img src="/profile/{{$booking->user->image}}" width="80" ></td>
+                                    <td><img src="https://twojlekarzprofile.s3.eu-central-1.amazonaws.com/images/{{$booking->user->image}}" width="80" ></td>
                                     <td>{{$booking->user->name}}</td>
                                     <td>{{$booking->user->pesel}}</td>
                                     <td>{{$booking->user->email}}</td>

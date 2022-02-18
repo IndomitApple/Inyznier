@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-body text-center ">
                         <h4>Informacje</h4>
-                        <img src="{{asset('images')}}/{{$user->image}}" width="100px" class="img-fluid" alt="Awatar">
+                        <img src="https://twojlekarzprofile.s3.eu-central-1.amazonaws.com/images/{{$user->image}}" width="100px" class="img-fluid" alt="Awatar">
                         <br>
                         <br>
                         <p class="lead">Imię i nazwisko: {{ucfirst($user->name)}}</p>

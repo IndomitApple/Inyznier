@@ -31,7 +31,7 @@
                                     <th scope="row">{{$key+1}}</th>
                                     <td>{{$patient->date}}</td>
                                     <td>{{$patient->user->name}}</td>
-                                    <td><img src="/profile/{{$patient->user->image}}" width="80"></td>
+                                    <td><img src="https://twojlekarzprofile.s3.eu-central-1.amazonaws.com/images/{{$patient->user->image}}" width="80"></td>
                                     <td>{{$patient->user->pesel}}</td>
                                     <td>{{$patient->user->email}}</td>
                                     <td>{{$patient->user->phone_number}}</td>

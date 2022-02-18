@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 
 class ProfileController extends Controller
@@ -27,12 +28,13 @@ class ProfileController extends Controller
         $this->validate($request, [
             'file' => 'required|image|mimes:jpg,jpeg,png',
         ]);
-        if ($request->hasFile('file')) {
+        if ($request->hasFile('file'))
+        {
             $image = $request->file('file');
-            $name = time() . '.' . $image->getClientOriginalExtension();
-            $destination = public_path('/profile');
-            $image->move($destination, $name);
+            $name = time() . '.' . $image->getClientOriginalName();
+            $filePath = 'images/' . $name;
 
+            Storage::disk('s3')->put($filePath, file_get_contents($image));
             $user = User::where('id', auth()->user()->id)->update(['image' => $name]);
             return redirect()->back()->with('message', 'Twoje zdjęcie zostało zaktualizowane.');
         }
