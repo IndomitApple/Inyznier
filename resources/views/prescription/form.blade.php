@@ -12,6 +12,7 @@
                     </div>
                     <div class="modal-body" id="app">
                         <input type="hidden" name="user_id" value="{{$booking->user_id}}">
+                        <input type="hidden" name="pet_id" value="{{$booking->pet_id}}">
                         <input type="hidden" name="doctor_id" value="{{$booking->doctor_id}}">
                         <input type="hidden" name="date" value="{{$booking->date}}">
                         <div class="form-group">
@@ -21,10 +22,6 @@
                         <div class="form-group">
                             <label>Objawy</label>
                             <textarea name="symptoms" class="form-control" placeholder="Wypisz objawy pacjenta" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>E-recepta</label>
-                            <input type="text" name="prescription_code" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Lekarstwa</label>

@@ -19,7 +19,6 @@
                             <th></th>
                             <th>Zdjęcie</th>
                             <th >Imię i nazwisko</th>
-                            <th>Specjalizacja</th>
                             <th>Wizyta</th>
                         </tr>
                     </thead>
@@ -30,7 +29,7 @@
                                 <img :src="'https://twojlekarzprofile.s3.eu-central-1.amazonaws.com/images/'+d.doctor.image" width="80" class="img-fluid">
                             </td>
                             <td>{{d.doctor.name}}</td>
-                            <td>{{d.doctor.department}}</td>
+                            <td>{{d.doctor.breed}}</td>
                             <td>
                                 <a :href="'/new-appointment/'+d.user_id+'/'+d.date">
                                     <button class="btn btn-success">Umów wizytę</button>

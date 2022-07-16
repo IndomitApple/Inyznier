@@ -19,4 +19,9 @@ class Prescription extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function pet()
+    {
+        return $this->belongsTo(Pet::class);
+    }
 }

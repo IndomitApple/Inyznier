@@ -1,8 +1,9 @@
 <?php
 
 use App\Http\Controllers\AppointmentController;
-use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\BreedController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\PetController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,7 @@ Route::get('/new-appointment/{doctorId}/{date}', 'App\Http\Controllers\FrontendC
 
 
 Route::group(['middleware'=>['auth','patient']],function(){
+    Route::resource('/pet', PetController::class);
     Route::get('/my-booking', 'App\Http\Controllers\FrontendController@myBookings')->name('my.booking');
     Route::post('booking/appointment','App\Http\Controllers\FrontendController@store')->name('booking.appointment');
 
@@ -43,7 +45,7 @@ Route::group(['middleware'=>['auth','admin']],function(){
     Route::get('/patients', '\App\Http\Controllers\PatientlistController@index')->name('patient');
     Route::get('/patients/all', '\App\Http\Controllers\PatientlistController@allTimeAppointment')->name('all.appointments');
     Route::get('/status/update/{id}', '\App\Http\Controllers\PatientlistController@toggleStatus')->name('update.status');
-    Route::resource('/department', DepartmentController::class);
+    Route::resource('/breed', BreedController::class);
 });
 
 Route::group(['middleware'=>['auth','doctor']],function(){
@@ -56,13 +58,4 @@ Route::group(['middleware'=>['auth','doctor']],function(){
     Route::post('/prescription','App\Http\Controllers\PrescriptionController@store')->name('prescription');
     Route::get('/prescription/{UserId}/{date}','App\Http\Controllers\PrescriptionController@show')->name('prescription.show');
     Route::get('/prescribed-patients','App\Http\Controllers\PrescriptionController@patientsFromPrescription')->name('prescribed.patients');
-});
-
-//Videochat
-Route::group(['middleware' => 'auth'], function() {
-    Route::get('/video-chat/{date}/{doctorId}/{userId}', 'App\Http\Controllers\VideoChatController@index')->name('video-chat');
-
-// Endpoints to call or receive calls.
-    Route::post('/video/call-user', 'App\Http\Controllers\VideoChatController@callUser');
-    Route::post('/video/accept-call', 'App\Http\Controllers\VideoChatController@acceptCall');
 });

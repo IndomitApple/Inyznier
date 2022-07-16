@@ -18,9 +18,9 @@ class CreatePrescriptionsTable extends Migration
             $table->string('name_of_disease');
             $table->string('symptoms');
             $table->integer('user_id');
+            $table->integer('pet_id');
             $table->integer('doctor_id');
             $table->string('date');
-            $table->text('prescription_code');
             $table->text('medicine');
             $table->text('procedure_to_use_medicine');
             $table->text('feedback');

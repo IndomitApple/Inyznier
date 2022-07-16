@@ -5,7 +5,7 @@
                 <div class="logo-img">
                     <img src="{{asset('template/src/img/hospital-svgrepo-com.svg')}}" class="header-brand-img" alt="lavalite">
                 </div>
-                <span class="text">TwójLekarz</span>
+                <span class="text">Weterynarz</span>
             </a>
             <button type="button" class="nav-toggle"><i data-toggle="expanded" class="ik ik-toggle-right toggle-icon"></i></button>
             <button id="sidebarClose" class="nav-close"><i class="ik ik-x"></i></button>
@@ -62,10 +62,10 @@
                     @endif
                     @if(auth()->check() && auth()->user()->role->name == 'admin')
                         <div class="nav-item has-sub">
-                            <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>Specjalizacje</span> <span class="badge badge-danger"></span></a>
+                            <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>Rasy</span> <span class="badge badge-danger"></span></a>
                             <div class="submenu-content">
-                                <a href="{{route('department.index')}}" class="menu-item">Wyświetl wszystkie</a>
-                                <a href="{{route('department.create')}}" class="menu-item">Dodaj nową</a>
+                                <a href="{{route('breed.index')}}" class="menu-item">Wyświetl wszystkie</a>
+                                <a href="{{route('breed.create')}}" class="menu-item">Dodaj nową</a>
                             </div>
                         </div>
                     @endif

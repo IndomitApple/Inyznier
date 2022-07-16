@@ -34,6 +34,10 @@ class ProfileController extends Controller
             $name = time() . '.' . $image->getClientOriginalName();
             $filePath = 'images/' . $name;
 
+            $id=auth()->user()->id;
+            $user = User::find($id);
+            Storage::disk('s3')->delete($user->image);
+
             Storage::disk('s3')->put($filePath, file_get_contents($image));
             $user = User::where('id', auth()->user()->id)->update(['image' => $name]);
             return redirect()->back()->with('message', 'Twoje zdjęcie zostało zaktualizowane.');

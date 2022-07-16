@@ -36,7 +36,6 @@
                                 <th>E-mail</th>
                                 <th>Adres</th>
                                 <th>Numer telefonu</th>
-                                <th>Specjalizacja</th>
                                 <th class="nosort">&nbsp</th>
                             </tr>
                         </thead>
@@ -45,11 +44,10 @@
                                 @foreach($users as $user)
                                     <tr>
                                         <td>{{$user->name}}</td>
-                                        <td><img src="https://twojlekarzprofile.s3.eu-central-1.amazonaws.com/images/{{$user->image}}" class="table-user-thumb" alt=""></td>
+                                        <td><img src="{{asset('D:\xampp\htdocs\inzynier\storage\app/public/images')}}/{{$user->image}}" class="table-user-thumb" alt=""></td>
                                         <td>{{$user->email}}</td>
                                         <td>{{$user->address}}</td>
                                         <td>{{$user->phone_number}}</td>
-                                        <td>{{$user->department}}</td>
                                         <td>
                                             <div class="table-actions">
                                                 <a  href="#" data-toggle="modal" data-target="#exampleModal{{$user->id}}"><i class="ik ik-eye" ></i></a>

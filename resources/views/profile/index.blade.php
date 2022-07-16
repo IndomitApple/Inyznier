@@ -19,7 +19,6 @@
                         <p>Adres: <b>{{auth()->user()->address}}</b></p>
                         <p>Numer telefonu: <b>{{auth()->user()->phone_number}}</b></p>
                         <p>Płeć: <b>{{__(auth()->user()->gender)}}</b></p>
-                        <p>Opis: <b>{{auth()->user()->description}}</b></p>
                     </div>
                 </div>
             </div>
@@ -63,10 +62,6 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
-                            <div class="form-group">
-                                <label>Opis - choroby przewlekłe</label>
-                                <textarea name="description" class="form-control">{{auth()->user()->description}}</textarea>
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-primary" type="submit">Zapisz</button>

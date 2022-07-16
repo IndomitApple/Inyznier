@@ -109,20 +109,20 @@
 
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="">Specjalizacja:</label>
-                                    <select name="department" class="form-control">
-                                        <option value="">Wybierz specjalizację</option>
-                                        @foreach(App\Models\Department::all() as $d)
-                                            <option value="{{$d->department}}">{{$d->department}}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('department')
-                                        <span class="invalid-feedback" role="alert">
+                                <label>Rola</label>
+                                <select name="role_id" class="form-control @error('role_id') is-invalid @enderror">
+                                    <option value="">Wybierz rolę</option>
+                                    @foreach(App\Role::where('name','!=','patient')->get() as $role)
+                                        <option value="{{$role->id}}">
+                                            {{__($role->name)}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('role_id')
+                                <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                    @enderror
-                                </div>
+                                @enderror
                             </div>
 
                             <div class="col-md-6">
@@ -151,22 +151,7 @@
                                  </div>
                              </div>
 
-                            <div class="col-md-6">
-                                <label>Rola</label>
-                                <select name="role_id" class="form-control @error('role_id') is-invalid @enderror">
-                                    <option value="">Wybierz rolę</option>
-                                    @foreach(App\Role::where('name','!=','patient')->get() as $role)
-                                        <option value="{{$role->id}}">
-                                            {{__($role->name)}}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                @error('role_id')
-                                    <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                @enderror
-                            </div>
+
                         </div>
                             <div class="form-group">
                                 <label for="exampleTextarea1">O mnie:</label>

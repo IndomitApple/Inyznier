@@ -14,9 +14,9 @@
                             <tr>
                                 <th scope="col">Nr</th>
                                 <th scope="col">Doktor</th>
+                                <th scope="col">Zwierzę</th>
                                 <th scope="col">Data</th>
                                 <th scope="col">Godzina</th>
-                                <th scope="col">Link do spotkania</th>
                                 <th scope="col">Status</th>
                             </tr>
                             </thead>
@@ -25,9 +25,9 @@
                                     <tr>
                                         <th scope="row">{{$key+1}}</th>
                                         <td>{{$appointment->doctor->name}}</td>
+                                        <td>{{$appointment->pet->name}}</td>
                                         <td class="text-nowrap">{{$appointment->date}}</td>
                                         <td>{{$appointment->time}}</td>
-                                        <td><a class="btn btn-primary" href="/video-chat/{{$appointment->date}}/{{$appointment->doctor_id}}/{{$appointment->user_id}}" role="button" >Dołącz</a></td>
                                         <td>
                                             @if(@$appointment->status==0)
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#cc0000" class="bi bi-x-square-fill" viewBox="0 0 16 16">

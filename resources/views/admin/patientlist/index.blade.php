@@ -27,10 +27,10 @@
                             <tr>
                                 <th scope="col">Nr</th>
                                 <th scope="col">Zdjęcie</th>
-                                <th scope="col">Pacjent</th>
+                                <th scope="col">Właściciel</th>
                                 <th scope="col">Adres e-mail</th>
                                 <th scope="col">Telefon</th>
-                                <th scope="col">Płeć</th>
+                                <th scope="col">Zwierzę</th>
                                 <th scope="col">Data</th>
                                 <th scope="col">Godzina</th>
                                 <th scope="col">Lekarz</th>
@@ -41,11 +41,11 @@
                             @forelse($bookings as $key=>$booking)
                                 <tr>
                                     <th scope="row">{{$key+1}}</th>
-                                    <td><img src="https://twojlekarzprofile.s3.eu-central-1.amazonaws.com/images/{{$booking->user->image}}" width="80"></td>
+                                    <td><img src="https://twojlekarzprofile.s3.eu-central-1.amazonaws.com/images/{{$booking->pet->image}}" width="80"></td>
                                     <td>{{$booking->user->name}}</td>
                                     <td>{{$booking->user->email}}</td>
                                     <td>{{$booking->user->phone_number}}</td>
-                                    <td>{{__($booking->user->gender)}}</td>
+                                    <td>{{$booking->pet->name}}</td>
                                     <td>{{$booking->date}}</td>
                                     <td>{{$booking->time}}</td>
                                     <td>{{$booking->doctor->name}}</td>

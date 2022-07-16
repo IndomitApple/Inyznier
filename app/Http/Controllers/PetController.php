@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pet;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
-class DoctorController extends Controller
+class PetController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +17,9 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $users = User::where('role_id', '!=', 3)->get();
-        return view('admin.doctor.index', compact('users'));
+        $id = auth()->user()->id;
+        $pets = Pet::where('user_id', '=', $id)->get();
+        return view('pet.index', compact('pets'));
     }
 
     /**
@@ -26,7 +29,7 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        return view('admin.doctor.create');
+        return view('pet.create');
     }
 
     /**
@@ -39,13 +42,22 @@ class DoctorController extends Controller
     {
         $this->validateStore($request);
         $data = $request->all();
-        $name = (new User)->userAvatar($request);
+        $name = (new Pet)->petAvatar($request);
 
         $data['image'] = $name;
-        $data['password'] = bcrypt($request->password);
-        User::create($data);
+        Pet::create
+        ([
+            'user_id'=>auth()->user()->id,
+            'image'=>$request->image,
+            'name'=>$request->name,
+            'date_of_birth'=> $request->date_of_birth,
+            'weight'=> $request->weight,
+            'is_male'=> $request->is_male,
+            'breed_id'=> $request->breed_id,
 
-        return redirect()->back()->with('message','Pomyślnie utworzono profil lekarza.');
+        ]);
+
+        return redirect()->back()->with('message','Pomyślnie utworzono profil zwierzęcia.');
     }
 
     /**
@@ -56,8 +68,8 @@ class DoctorController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
-        return view('admin.doctor.delete', compact('user'));
+        $pet = Pet::find($id);
+        return view('pet.delete', compact('pet'));
     }
 
     /**
@@ -68,8 +80,8 @@ class DoctorController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-        return view('admin.doctor.edit', compact('user'));
+        $pet = Pet::find($id);
+        return view('pet.edit', compact('pet'));
     }
 
     /**
@@ -83,26 +95,17 @@ class DoctorController extends Controller
     {
         $this->validateUpdate($request,$id);
         $data = $request->all();
-        $user = User::find($id);
-        $imageName = $user->image;
-        $userPassword = $user->password;
+        $pet = Pet::find($id);
+        $imageName = $pet->image;
         if($request->hasFile('image'))
         {
-            $imageName = (new User)->userAvatar($request);
-            Storage::disk('s3')->delete($user->image);
+            $imageName = (new Pet)->petAvatar($request);
+            Storage::disk('s3')->delete($pet->image);
         }
         $data['image'] = $imageName;
-        if($request->password)
-        {
-            $data['password'] = bcrypt($request->password);
-        }
-        else
-        {
-            $data['password'] = $userPassword;
-        }
 
-        $user->update($data);
-        return redirect()->route('doctor.index')->with('message','Profil lekarza został zaktualizowany.');
+        $pet->update($data);
+        return redirect()->route('pet.index')->with('message','Profil zwierzęcia został zaktualizowany.');
     }
 
     /**
@@ -113,32 +116,24 @@ class DoctorController extends Controller
      */
     public function destroy($id)
     {
-        if(auth()->user()->id == $id)
+        $pet = Pet::find($id);
+        $petDelete = $pet->delete();
+        if($petDelete)
         {
-            abort(401);
+            Storage::disk('s3')->delete($pet->image);
         }
-        $user = User::find($id);
-        $userDelete = $user->delete();
-        if($userDelete)
-        {
-            Storage::disk('s3')->delete($user->image);
-        }
-        return redirect()->route('doctor.index')->with('message','Profil lekarza został usunięty.');
+        return redirect()->route('pet.index')->with('message','Profil zwierzęcia został usunięty.');
     }
 
     public function validateStore($request)
     {
         return $this->validate($request,[
             'name'=>'required',
-            'email'=>'required|unique:users',
-            'password'=>'required|min:6|max:25',
-            'gender'=>'required',
-            'education'=>'required',
-            'address'=>'required',
-            'phone_number'=>'required|numeric',
+            'date_of_birth'=>'required',
+            'is_male'=>'required',
             'image'=>'required|mimes:jpeg,jpg,png',
-            'role_id'=>'required',
-            'description'=>'required'
+            'breed_id'=>'required',
+            'weight'=>'required'
         ]);
     }
 
@@ -146,14 +141,11 @@ class DoctorController extends Controller
     {
         return $this->validate($request,[
             'name'=>'required',
-            'email'=>'required|unique:users,email,'.$id,
-            'gender'=>'required',
-            'education'=>'required',
-            'address'=>'required',
-            'phone_number'=>'required|numeric',
-            'image'=>'mimes:jpeg,jpg,png',
-            'role_id'=>'required',
-            'description'=>'required'
+            'date_of_birth'=>'required',
+            'is_male'=>'required',
+            'image'=>'required|mimes:jpeg,jpg,png',
+            'breed_id'=>'required',
+            'weight'=>'required'
         ]);
     }
 }

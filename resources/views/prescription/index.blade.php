@@ -27,20 +27,20 @@
                             </div>
                         </form>
                     <div class="card-body" id="app">
-                        <table class="table table-striped">
+                        <table class="table table-striped table-responsive text-nowrap">
                             <thead>
-                            <tr>
+                            <tr class="text-nowrap">
                                 <th scope="col">Godzina</th>
                                 <th scope="col">Data</th>
                                 <th scope="col">Zdjęcie</th>
-                                <th scope="col">Pacjent</th>
-                                <th scope="col">PESEL</th>
-                                <th scope="col">Adres e-mail</th>
-                                <th scope="col">Telefon</th>
+                                <th scope="col">Właściciel</th>
+                                <th scope="col">Zwierzę</th>
                                 <th scope="col">Płeć</th>
-                                <th scope="col">Choroby przewlekłe</th>
+                                <th scope="col">Rasa</th>
+                                <th scope="col">Waga</th>
                                 <th scope="col">Informacje do wizyty</th>
-                                <th scope="col">Spotkanie</th>
+                                <th scope="col">Data urodzenia</th>
+                                <th scope="col">Telefon</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Recepta</th>
                             </tr>
@@ -50,17 +50,20 @@
                                 <tr>
                                     <td>{{$booking->time}}</td>
                                     <td>{{$booking->date}}</td>
-                                    <td><img src="https://twojlekarzprofile.s3.eu-central-1.amazonaws.com/images/{{$booking->user->image}}" width="80" ></td>
+                                    <td><img src="https://twojlekarzprofile.s3.eu-central-1.amazonaws.com/images/{{$booking->pet->image}}" width="80" ></td>
                                     <td>{{$booking->user->name}}</td>
-                                    <td>{{$booking->user->pesel}}</td>
-                                    <td>{{$booking->user->email}}</td>
-                                    <td>{{$booking->user->phone_number}}</td>
-                                    <td>{{__($booking->user->gender)}}</td>
-                                    <td>{{__($booking->user->description)}}</td>
-                                    <td>{{$booking->info_from_patient}}</td>
-                                    <td>
-                                        <a class="btn btn-primary" href="/video-chat/{{$booking->date}}/{{$booking->doctor_id}}/{{$booking->user_id}}" role="button" target="_blank">Dołącz</a>
+                                    <td>{{$booking->pet->name}}</td>
+                                    <td>@if(@$booking->pet->is_male==1)
+                                            Samiec
+                                        @else
+                                            Samica
+                                        @endif
                                     </td>
+                                    <td>{{__($booking->pet->breed->breed)}}</td>
+                                    <td>{{$booking->pet->weight}}</td>
+                                    <td>{{$booking->info_from_patient}}</td>
+                                    <td>{{$booking->pet->date_of_birth}}</td>
+                                    <td>{{$booking->user->phone_number}}</td>
                                     <td>
                                         @if(@$booking->status==0)
                                             <a href="{{route('update.status',[$booking->id])}}">

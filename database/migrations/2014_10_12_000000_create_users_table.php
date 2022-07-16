@@ -21,14 +21,11 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('gender');
             $table->integer('role_id');
-            $table->bigInteger('pesel')->nullable();
             $table->string('address')->nullable();
             $table->string('phone_number')->nullable();
-            $table->string('department')->nullable();
             $table->string('image')->nullable();
             $table->string('education')->nullable();
             $table->text('description')->nullable();
-
             $table->rememberToken();
             $table->timestamps();
         });

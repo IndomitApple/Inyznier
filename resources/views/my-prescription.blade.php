@@ -13,7 +13,7 @@
                             <tr class="text-nowrap">
                                 <th scope="col">Data</th>
                                 <th scope="col">Lekarz</th>
-                                <th scope="col">Kod recepty</th>
+                                <th scope="col">Zwierzę</th>
                                 <th scope="col">Lekarstwa</th>
                                 <th scope="col">Stosowanie lekarstw</th>
                                 <th scope="col">Rozpoznanie choroby</th>
@@ -26,7 +26,7 @@
                                 <tr>
                                     <td class="text-nowrap">{{$prescription->date}}</td>
                                     <td>{{$prescription->doctor->name}}</td>
-                                    <td>{{$prescription->prescription_code}}</td>
+                                    <td>{{$prescription->pet->name}}</td>
                                     <td>{{$prescription->medicine}}</td>
                                     <td>{{$prescription->procedure_to_use_medicine}}</td>
                                     <td>{{$prescription->name_of_disease}}</td>

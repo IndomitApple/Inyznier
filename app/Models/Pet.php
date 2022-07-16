@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
 
-class User extends Authenticatable
+class Pet extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -22,15 +22,12 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'email',
-        'password',
-        'role_id',
-        'address',
-        'phone_number',
+        'user_id',
+        'date_of_birth',
+        'is_male',
+        'breed_id',
+        'weight',
         'image',
-        'education',
-        'description',
-        'gender',
     ];
 
     /**
@@ -39,8 +36,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password',
-        'remember_token',
+
     ];
 
     /**
@@ -49,15 +45,25 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+
     ];
 
-    public function role()
+    public function breed()
     {
-        return $this->hasOne('App\Role', 'id', 'role_id');
+        return $this->hasOne('App\Breed', 'id', 'breed_id');
     }
 
-    public function userAvatar($request)
+    public function user()
+    {
+        return $this->hasOne('App\User', 'id', 'user_id');
+    }
+
+    public function pet()
+    {
+        return $this->hasOne('App\Pet', 'id', 'pet_id');
+    }
+
+    public function petAvatar($request)
     {
         $image = $request->file('image');
         $name = time() . '.' . $image->getClientOriginalName();

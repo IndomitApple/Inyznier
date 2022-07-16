@@ -8,8 +8,8 @@
                 <div class="page-header-title">
                     <i class="ik ik-edit bg-blue"></i>
                     <div class="d-inline">
-                        <h5>Specjalizacje</h5>
-                        <span>Dodaj specjalizację</span>
+                        <h5>Rasy</h5>
+                        <span>Dodaj rasę</span>
                     </div>
                 </div>
             </div>
@@ -26,15 +26,15 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h3>Dodaj nową specjalizację</h3>
+                    <h3>Dodaj nową rasę</h3>
                 </div>
                 <div class="card-body">
-                    <form class="forms-sample" action="{{route('department.store')}}" method="post">@csrf
+                    <form class="forms-sample" action="{{route('breed.store')}}" method="post">@csrf
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control @error('department') is-invalid @enderror" id="exampleInputName1" name="department" placeholder="Nazwa specjalizacji" value="{{old('department')}}">
-                                    @error('department')
+                                    <input type="text" class="form-control @error('breed') is-invalid @enderror" id="exampleInputName1" name="breed" placeholder="Nazwa rasy" value="{{old('breed')}}">
+                                    @error('breed')
                                     <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -43,7 +43,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary mr-2">Dodaj specjalizację</button>
+                            <button type="submit" class="btn btn-primary mr-2">Dodaj rasę</button>
                         </div>
                     </form>
                 </div>

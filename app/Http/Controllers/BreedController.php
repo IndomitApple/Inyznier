@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Department;
+use App\Models\Breed;
 
-class DepartmentController extends Controller
+class BreedController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $departments = Department::get();
-        return view('admin.department.index',compact('departments'));
+        $breeds = Breed::get();
+        return view('admin.breed.index',compact('breeds'));
     }
 
     /**
@@ -25,7 +25,7 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        return view('admin.department.create');
+        return view('admin.breed.create');
     }
 
     /**
@@ -37,10 +37,10 @@ class DepartmentController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'department'=>'required'
+            'breed'=>'required'
         ]);
-        Department::create($request->all());
-        return redirect()->back()->with('message','Dodano nową specjalizację');
+        Breed::create($request->all());
+        return redirect()->back()->with('message','Dodano nową rasę.');
     }
 
     /**
@@ -62,8 +62,8 @@ class DepartmentController extends Controller
      */
     public function edit($id)
     {
-        $department = Department::find($id);
-        return view('admin.department.edit', compact('department'));
+        $breed = Breed::find($id);
+        return view('admin.breed.edit', compact('breed'));
     }
 
     /**
@@ -76,12 +76,12 @@ class DepartmentController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'department'=>'required'
+            'breed'=>'required'
         ]);
-        $department = Department::find($id);
-        $department->department = $request->department;
-        $department->save();
-        return redirect()->route('department.index')->with('message','Zmieniono nazwę specjalizacji');
+        $breed = Breed::find($id);
+        $breed->breed = $request->breed;
+        $breed->save();
+        return redirect()->route('breed.index')->with('message','Zmieniono nazwę rasy.');
     }
 
     /**
@@ -92,8 +92,8 @@ class DepartmentController extends Controller
      */
     public function destroy($id)
     {
-        $department = Department::find($id);
-        $department->delete();
-        return redirect()->route('department.index')->with('message','Usunięto specjalizację pomyślnie.');
+        $breed = Breed::find($id);
+        $breed->delete();
+        return redirect()->route('breed.index')->with('message','Usunięto specjalizację pomyślnie.');
     }
 }

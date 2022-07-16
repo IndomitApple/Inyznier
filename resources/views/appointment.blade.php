@@ -12,7 +12,7 @@
                         <br>
                         <p class="lead">Imię i nazwisko: {{ucfirst($user->name)}}</p>
                         <p class="lead">Tytuł: {{$user->education}}</p>
-                        <p class="lead">Specjalizacja: {{$user->department}}</p>
+                        <p class="lead">Adres: {{$user->address}}</p>
                     </div>
                 </div>
             </div>
@@ -63,9 +63,31 @@
                         <div class="card-body">
                             <div class="row">
                                 <textarea class="form-control @error('info_from_patient') is-invalid @enderror" rows="4" name="info_from_patient"
-                                          placeholder="Napisz dodatkowe informacje odnośnie wizyty, takie jak:&#10;-cel wizyty,&#10;-objawy choroby,&#10;-dolegliwości itp.">
+                                          placeholder="Napisz dodatkowe informacje odnośnie wizyty, takie jak:&#10;-cel wizyty,&#10;-objawy,&#10;-dolegliwości itp.">
                                 </textarea>
                                 @error('info_from_patient')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header lead">
+                            Wybierz zwierzę:
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <select name="petId" class="form-control @error('petId') is-invalid @enderror">
+                                    <option value="">Twoje zwierzę</option>
+                                    @foreach(App\Pet::all() as $pet)
+                                        <option value="{{$pet->id}}">
+                                            {{__($pet->name)}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('petId')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Appointment;
 use App\Models\Time;
 use App\Models\User;
+use App\Models\Pet;
 use App\Models\Booking;
 use App\Models\Prescription;
 use Illuminate\Support\Facades\App;
@@ -46,18 +47,12 @@ class FrontendController extends Controller
     {
         date_default_timezone_set('Europe/Warsaw');
         $request->validate(['time'=>'required','info_from_patient'=>'required']);
-        /*If patient took an appointment this day, he gets error message*/
-        //Patient can book only one appointment per day
-        $check = $this->checkBookingTimeInterval();
-        if($check)
-        {
-            return redirect()->back()->with('errormessage','Zarezerwowałeś już dzisiaj wizytę. Poczekaj proszę do następnego dnia, aby móc zarezerować kolejną.');
-        }
 
         /*Create booking*/
         Booking::create
         ([
             'user_id'=>auth()->user()->id,
+            'pet_id'=>$request->petId,
             'doctor_id'=>$request->doctorId,
             'time'=>$request->time,
             'date'=> $request->date,
@@ -88,15 +83,6 @@ class FrontendController extends Controller
         }
 
         return redirect()->back()->with('message','Zarezerwowałeś wizytę.');
-    }
-
-    /*Checks if the patient took an appointment today - he needs to wait for the next day to take another*/
-    public function checkBookingTimeInterval()
-    {
-        return Booking::orderby('id','desc')
-                ->where('user_id',auth()->user()->id)
-                ->whereDate('created_at',date('Y-m-d'))
-                ->exists();
     }
 
     public function myBookings()
